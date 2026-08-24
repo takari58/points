@@ -3,8 +3,8 @@ const spots = [
     {
         name: "テスト2",
         //学校用 通常スポット
-        lat: 37.954201, 
-        lng:139.332605,
+        lat: 37.958972,  
+        lng:139.339891,
         radius: 50,
         //image:"castle.png"
     },
