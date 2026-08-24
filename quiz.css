@@ -83,3 +83,7 @@ button:active {
     line-height:1.5;
     font-size:40px
 }
+
+.scoreText{
+    font-size: 100px;
+}
