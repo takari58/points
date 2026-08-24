@@ -135,7 +135,7 @@ const spots2 =[
         //自宅用 激レアスポット
         lat: 37.954201, 
         lng:139.332605,
-        radius: 50,
+        radius: 150,
         unlockPoint:0
     },
     {
