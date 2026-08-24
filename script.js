@@ -33,7 +33,7 @@ const spots = [
         lat: 37.94371455113034,
         lng: 139.33219327519282,
         radius: 20,
-        image:"image/simizu.jpg"
+        image:"image/SL.jpg"
     },
     {
         name: "諏訪神社",
@@ -89,7 +89,7 @@ const spots = [
         lat: 37.944357,
         lng: 139.333388,
         radius: 30,
-        image:"image/simizu.jpg"
+        image:"image/ikunesu.jpg"
     },
     {
         name: "市民文化会館",
