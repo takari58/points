@@ -1,7 +1,8 @@
 // ランドマーク一覧
 const spots = [
     {
-        name: "テスト",
+        name: "テスト2",
+        //学校用 通常スポット
         lat: 37.954201, 
         lng:139.332605,
         radius: 50,
@@ -118,6 +119,15 @@ const spots = [
 //激レアランドマーク
 const spots2 =[
     {
+        name: "テスト1",
+        //自宅用 激レアスポット
+        lat: 37.954201, 
+        lng:139.332605,
+        radius: 50,
+        //image:"castle.png"
+        unlockPoint:0
+    },
+    {
       name: "藤倉メンチカツや",
       lat: 37.93682,
       lng: 139.34488,
@@ -189,20 +199,15 @@ spots.forEach(spot => {
     }).addTo(map);
 });
 
-// ========================================
 // 激レアランドマークの解放・表示
-// ========================================
 
 function updateRareSpots() {
-
     const totalScore =
         Number(localStorage.getItem("totalScore")) || 0;
-
     const answeredSpots =
         JSON.parse(
             localStorage.getItem("answeredSpots")
         ) || [];
-
 
     spots2.forEach(spot => {
 
@@ -223,11 +228,16 @@ function updateRareSpots() {
         const marker = L.marker([
             spot.lat,
             spot.lng
-        ]).addTo(map);
-
+        ],{
+            icon:L.icon({
+                iconUrl:'rare-pin.png',
+                iconSize:[40,40],
+                iconAnchor:[20,40],
+                popupAnchor:[0,-40]
+            })
+        }).addTo(map);
 
         let popupContent;
-
 
         if (answered) {
 
@@ -244,17 +254,11 @@ function updateRareSpots() {
                 <div style="text-align:center;">
                     <h3>★ ${spot.name}</h3>
                     <p>激レアスポット解放！</p>
-
-                    <a href="quiz.html?spot=${encodeURIComponent(spot.name)}">
-                        クイズへ
-                    </a>
                 </div>
             `;
         }
 
-
         marker.bindPopup(popupContent);
-
 
         // マーカーを保存
         spot.marker = marker;
@@ -332,12 +336,10 @@ document.getElementById("coords").innerHTML = `
     alert("位置情報が取得できません");
 }); 
 
-// ========================================
 // 合計得点を表示
-// ========================================
 
 function updateTotalScore() {
-
+    
     const totalScore =
         Number(localStorage.getItem("totalScore")) || 0;
 
@@ -354,16 +356,10 @@ function updateTotalScore() {
     updateRareSpots();
 }
 
-// ========================================
 // ページ読み込み時に得点を表示
-// ========================================
-
 updateTotalScore();
 
-
-// ========================================
 // 開発用：得点・回答履歴をリセット
-// ========================================
 
 function resetGame() {
 
@@ -376,13 +372,11 @@ function resetGame() {
         return;
     }
 
-
     // 得点を0にする
     localStorage.setItem(
         "totalScore",
         "0"
     );
-
 
     // 回答済み地点を空にする
     localStorage.setItem(
@@ -390,13 +384,10 @@ function resetGame() {
         JSON.stringify([])
     );
 
-
     alert("得点と回答履歴をリセットしました。");
-
 
     // 得点表示を更新
     updateTotalScore();
-
 
     // ページを再読み込み
     location.reload();
