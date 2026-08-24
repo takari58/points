@@ -252,6 +252,7 @@ function updateRareSpots() {
             popupContent = `
                 <div style="text-align:center;">
                     <h3>★ ${spot.name}</h3>
+                    <img src="${spot.image}" width="200"><br>
                     <p>激レアスポット解放！</p>
                 </div>
             `;
