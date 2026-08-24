@@ -280,7 +280,7 @@ function startQuiz() {
     let score = 0;
 
     // 1問20点
-    const POINT = 160;
+    const POINT = 320;
 
 
     // ========================================
