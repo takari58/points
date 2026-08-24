@@ -1,0 +1,411 @@
+// ランドマークごとのクイズ(17か所×3問)
+const quizData = {
+    "テスト": [
+        { q: "テスト用////////新発田城は花の名前にちなんで別名「あやめ城」と呼ばれる", a: true,
+          explanation:"かつて城周辺に湿地が多く自生したあやめが多かったことに由来しています" },
+        { q: "新発田城の屋根には二匹のシャチホコが乗っている", a: false,
+          explanation:"三階櫓の屋根の形はT字型になっており、全国でも珍しい3匹のシャチホコが乗っています" },
+        { q: "新発田城は国の重要文化財に指定されている", a: true,
+          explanation:"「表門」と「旧二の丸偶櫓」が重要文化財に指定されています" }
+    ],
+    "新発田城跡": [
+        { q: "新発田城は花の名前にちなんで別名「あやめ城」と呼ばれる", a: true,
+          explanation:"かつて城周辺に湿地が多く自生したあやめが多かったことに由来しています" },
+        { q: "新発田城の屋根には二匹のシャチホコが乗っている", a: false,
+          explanation:"三階櫓の屋根の形はT字型になっており、全国でも珍しい3匹のシャチホコが乗っています" },
+        { q: "新発田城は国の重要文化財に指定されている", a: true,
+          explanation:"「表門」と「旧二の丸偶櫓」が重要文化財に指定されています" }
+    ],
+    "清水園": [
+        { q: "清水園の中央にある大きな池は上から見ると「水」という文字をかたどっている", a: true,
+          explanation:"草書体の「水」の文字を模した複雑な池泉が特徴です" },
+        { q: "清水園は江戸時代初期に作られた庭園である", a: false,
+          explanation:"現在の清水園は、江戸時代中期に整備されたとされています" },
+        { q: "清水園は国の名勝に指定されている", a: true,
+          explanation:"正式名称は「旧新発田藩下屋敷清水谷御殿庭園及び五十公野御茶屋庭園」です" }
+    ],
+    "蔵春閣": [
+        { q: "蔵春閣はもともと新発田市に建てられた建物である。", a: false,
+          explanation:"東京の向島、隅田川沿いに建てられた大蔵喜八郎の別邸です" },
+        { q: "蔵春閣には、歴代総理大臣や渋沢栄一が訪れたとされている", a: true,
+          explanation:"賓客をもてなす迎賓館として使用され、政財界の重鎮や海外の賓客が訪れました" },
+        { q: "蔵春閣は見学だけでなく、一部の部屋を借りて利用することができる", a: true,
+          explanation:"新発田観光ホームページに施設・時間ごとに使用料金が記載されています" }
+    ],
+    "東公園のSL": [
+        { q: "このSLは実際に羽越本線や信越本線で運行していた", a: true,
+          explanation:"1972年の羽越本線電化完成に伴い、運行が終了しました" },
+        { q: "このSLの名称は「D51」(デゴイチ)である", a: true,
+          explanation:"正式名称は「D51形蒸気機関車」です" },
+        { q: "現在、自由に中へ入って運転することができる", a: false,
+          explanation:"外側にフェンスが張られており、普段は中に入ることはできません、ルールを守って観賞しましょう" }
+    ],
+    "諏訪神社": [
+        { q: "五穀豊穣・無病息災・学業成就などの御利益があると言われている", a: true,
+          explanation:"主祭神は「建御名方命」、武勇や開運・農業・勝負の神と言われています" },
+        { q: "今の社殿は建立当時のまま、再建はされていない", a: false,
+          explanation:"平成13年11月5日の不審火によって消失、その後再建が行われました" },
+        { q: "諏訪神社は「おすわさま」という愛称で親しまれている", a: true,
+          explanation:"厄払いや車のお祓い、年間を通じた様々な催事で地域の人に深く愛されています" }
+    ],
+    "市役所": [
+        { q: "市役所の本庁舎は10階建てである", a: false,
+          explanation:"地上7階建てです" },
+        { q: "新発田市役所の本庁舎の愛称は「ヨリネスしばた」である", a: true,
+          explanation:"「ヨリ」とは市民が立ち寄る、市民と行政の糸をより合わせた太い綱の意味、「ネス」は新発田の方言です" },
+        { q: "中心市街地の活性化のため移転が行われた", a: true,
+          explanation:"定期的にイベントを開催し、地域交流の場を設けています" }
+    ],
+    "王紋酒造": [
+        { q: "王紋酒造には、創業200年以上の伝統がある", a: true,
+          explanation:"創業時の銘柄は、諏訪神社前に位置していたことから「諏訪盛」でした" },
+        { q: "女人禁制と言われていた酒造りに女性を早くから登用した", a: true,
+          explanation:"王紋酒造ホームページには日本初の女性一級醸造技能士の方への取材文が掲載されています" },
+        { q: "酒蔵は見学することができない", a: false,
+          explanation:"五階菱では王紋酒造酒蔵見学ツアーの案内を行っています" },
+    ],
+    "五十公野公園": [
+        { q: "ダチョウを見ることができる", a: false,
+          explanation:"季節によってはカモや白鳥を見ることができます" },
+        { q: "あやめの見頃は6月である", a: true,
+          explanation:"面積1.8Haの敷地に、約300品種60万本のあやめが咲き競います" },
+        { q: "6月中旬から下旬にかけての「しばたあやめまつり」では、ライトアップや露店を楽しむことができる", a: true,
+          explanation:"あやめ園には蛍が生息しており、運が良ければ出会えるかもしれません" }
+    ],
+    "カルチャーセンター": [
+        { q: "アリーナだけでなく、剣道場や柔道場、相撲場なども利用できる", a: true,
+          explanation:"用途に合わせた施設を利用することができます" },
+        { q: "カルチャーセンターにはプールがある", a: false,
+          explanation:"プールはありません" },
+        { q: "「全国うまいもん横丁」という食に関するイベントが開催されることがある", a: true,
+          explanation:"北海道から沖縄までのうまいもんを集め販売会を行います" }
+    ],
+    "新発田駅": [
+        { q: "新発田駅の開業は1912年である", a: true,
+          explanation:"新津～新発田駅間の開通と同時に開業しました" },
+        { q: "新発田駅には0番線は存在しない", a: false,
+          explanation:"0番線は通称「盲腸線」と呼ばれる行き止まり路線です" },
+        { q: "現在の駅舎は新発田城をモチーフにしてデザインされている", a: true,
+          explanation:"2013年に黒い瓦となまこ壁を用いた和風の駅舎に生まれ変わりました" }
+    ],
+    "あやめの湯": [
+        { q: "源泉かけ流しの温泉である", a: true,
+          explanation:"湯船から二王子岳が一望できる源泉かけ流しの温泉です" },
+        { q: "あやめの湯は宿泊施設である", a: false,
+          explanation:"宿泊はできません" },
+        { q: "足湯の利用は料金がかかる", a: false,
+          explanation:"玄関前に併設されており、無料で利用することができます" }
+    ],
+    "イクネスしばた": [
+        { q: "イクネスしばたは学習・交流・図書館機能を持つ公共施設である", a: true,
+          explanation:"図書館、こどもセンター、キッチンスタジオなどの施設があり、イベントや講座も開催されています" },
+        { q: "キッチンスタジオでは定期的に料理教室が開催されている", a: true,
+          explanation:"事前申し込みはイクネスしばた公式ホームページから行うことができます" },
+        { q: "こどもセンターには休館日はない", a: false,
+          explanation:"年中無休ではありませんので、公式ページを確認する必要があります" }
+    ],
+    "市民文化会館": [
+        { q: "落語会やコンサートなどのイベントが定期的に開催されている", a: true,
+          explanation:"他にも、サイエンスライブや市民の方による講演なども行われています" },
+        { q: "市民文化会館の大ホールの座席数は約500席である", a: false,
+          explanation:"大ホールの収容人数は916人です" },
+        { q: "楽器の練習や活動に使用できる練習室がある", a: true,
+          explanation:"練習室などの使用にかかる料金は市民文化会館公式のページに記載されています" }
+    ],
+    "新発田歴史図書館": [
+        { q: "歴史関連の書籍・古文書だけでなく、浮世絵や古写真などの展示もされている", a: true,
+          explanation:"定期的に春季・冬季の通常展や企画展も開催されています" },
+        { q: "資料の貸し出しは行っていない", a: false,
+          explanation:"利用者カードを作成することで、一般図書等の資料を借りることができます" },
+        { q: "未来へ向けた新発田市の歴史の継承を行っている", a: true,
+          explanation:"新発田市の歴史や郷土について学び、歴史でコミュニティのつながりを創出します" }
+    ],
+    "旧新発田市役所": [
+        { q: "旧市役所は木造建築だった", a: false,
+          explanation:"鉄筋コンクリート造でした" },
+        { q: "旧市役所は老朽化や中心市街地の活性化のため移転した", a: true,
+          explanation:"老朽化に加え耐震性の課題から閉庁・解体されました" },
+        { q: "2017年に現在の新発田市役所へ移転した", a: true,
+          explanation:"旧庁舎跡地は現在、広場などとして整備されています" }
+    ],
+    "新潟職能短大":[
+        { q: "桜の木の数は25本以上である", a: true,
+          explanation:"全部で35本あります" },
+        { q: "学外の人は学食が食べられない", a: false,
+          explanation:"学外の方も食券を購入して学食を食べることができます" },
+        { q: "このアプリを作ったのは電子情報技術科の学生である", a: true,
+          explanation:"卒業研究でウェブアプリケーションの開発をしました" }
+    ],
+    "菊水": [
+        { q: "菊水酒造は明治時代に創業した酒蔵である", a: true,
+          explanation:"ちなみに、菊水の酒銘は不老長寿を謳った「菊慈童」という能楽に起源があります" },
+        { q: "菊水日本酒文化研究所は一般公開されていない", a: false,
+          explanation:"蔵での醸造工程見学と日本酒文化に触れる蔵見学を楽しむことができます" },
+        { q: "麴や酒粕を利用したスイーツやオリジナルドリンクが楽しめるカフェがある", a: true,
+          explanation:"店内からは枯山水の日本庭園を眺めることができます" }
+    ],
+    //激レアも以下にクイズを作成
+    "藤倉メンチカツや": [
+        { q: "菊水酒造は明治時代に創業した酒蔵である", a: true,
+          explanation:"ちなみに、菊水の酒銘は不老長寿を謳った「菊慈童」という能楽に起源があります" },
+        { q: "菊水日本酒文化研究所は一般公開されていない", a: false,
+          explanation:"蔵での醸造工程見学と日本酒文化に触れる蔵見学を楽しむことができます" },
+        { q: "麴や酒粕を利用したスイーツやオリジナルドリンクが楽しめるカフェがある", a: true,
+          explanation:"店内からは枯山水の日本庭園を眺めることができます" }
+    ],
+};
+/*
+// ===== URL取得 =====
+const params = new URLSearchParams(window.location.search);
+const spotName = params.get("spot");
+
+document.getElementById("title").textContent = spotName + " クイズ";
+
+const quizzes = quizData[spotName];
+
+let index = 0;
+let score = 0;
+const POINT = 20;
+
+// ===== 問題表示 =====
+function showQuiz() {
+    document.getElementById("result").textContent = "";
+    document.getElementById("explanation").textContent = "";
+    document.getElementById("quizBox").textContent = quizzes[index].q;
+}
+
+showQuiz();
+
+// ===== 回答 =====
+function answer(userAnswer) {
+    const quiz = quizzes[index];
+    const correct = quiz.a;
+
+    if (userAnswer === correct) {
+        document.getElementById("result").textContent = "正解！";
+        score++;
+    } else {
+        document.getElementById("result").textContent = "不正解…";
+    }
+    //解説表示
+    document.getElementById("explanation").textContent =
+        "解説： " + quiz.explanation;
+
+    index++;
+
+    if (index < quizzes.length) {
+        setTimeout(showQuiz, 1000);
+    } else {
+        setTimeout(showScore, 2500);
+    }
+}
+
+// ===== スコア表示 =====
+function showScore() {
+    //クイズ画面を消す
+    document.querySelector(".quiz-container").style.display = "none";
+
+    //スコア表示画面
+    document.getElementById("scoreScreen").classList.remove("hidden");
+    
+    const totalScore = score * POINT; // ★ 点数計算
+
+    document.getElementById("scoreText").textContent =
+        `${quizzes.length}問中 ${score}問正解（${totalScore}点）`;
+
+}
+*/
+
+
+// ========================================
+// URLからランドマーク名を取得
+// ========================================
+
+const params = new URLSearchParams(window.location.search);
+const spotName = params.get("spot");
+
+
+// ========================================
+// 回答済み地点を取得
+// ========================================
+
+// localStorageから回答済み地点を取得
+let answeredSpots =
+    JSON.parse(localStorage.getItem("answeredSpots")) || [];
+
+
+// ========================================
+// この地点をすでに回答しているか確認
+// ========================================
+
+if (answeredSpots.includes(spotName)) {
+
+    document.querySelector(".quiz-container").style.display = "none";
+
+    const scoreScreen = document.getElementById("scoreScreen");
+
+    scoreScreen.classList.remove("hidden");
+
+    document.getElementById("scoreText").textContent =
+        `${spotName}のクイズはすでに回答済みです。`;
+
+} else {
+
+    startQuiz();
+
+}
+
+
+// ========================================
+// クイズ開始
+// ========================================
+
+function startQuiz() {
+
+    document.getElementById("title").textContent =
+        spotName + " クイズ";
+
+    const quizzes = quizData[spotName];
+
+    // クイズが存在しない場合
+    if (!quizzes) {
+        document.getElementById("quizBox").textContent =
+            "この地点のクイズはありません。";
+        return;
+    }
+
+    let index = 0;
+
+    // このクイズでの正解数
+    let score = 0;
+
+    // 1問20点
+    const POINT = 20;
+
+
+    // ========================================
+    // 問題表示
+    // ========================================
+
+    function showQuiz() {
+
+        document.getElementById("result").textContent = "";
+
+        document.getElementById("explanation").textContent = "";
+
+        document.getElementById("quizBox").textContent =
+            quizzes[index].q;
+    }
+
+
+    // 最初の問題を表示
+    showQuiz();
+
+
+    // ========================================
+    // 回答
+    // ========================================
+
+    window.answer = function(userAnswer) {
+
+        const quiz = quizzes[index];
+
+        const correct = quiz.a;
+
+
+        // 正解判定
+        if (userAnswer === correct) {
+
+            document.getElementById("result").textContent =
+                "正解！";
+
+            score++;
+
+        } else {
+
+            document.getElementById("result").textContent =
+                "不正解…";
+        }
+
+
+        // 解説表示
+        document.getElementById("explanation").textContent =
+            "解説： " + quiz.explanation;
+
+
+        // 次の問題へ
+        index++;
+
+
+        if (index < quizzes.length) {
+
+            setTimeout(showQuiz, 1000);
+
+        } else {
+
+            setTimeout(showScore, 2500);
+        }
+    };
+
+
+    // ========================================
+    // スコア表示
+    // ========================================
+
+    function showScore() {
+
+        // 今回のクイズで獲得した点数
+        const quizScore = score * POINT;
+
+
+        // ====================================
+        // 合計得点を取得
+        // ====================================
+
+        let totalScore =
+            Number(localStorage.getItem("totalScore")) || 0;
+
+
+        // 今回の得点を加算
+        totalScore += quizScore;
+
+
+        // localStorageに保存
+        localStorage.setItem(
+            "totalScore",
+            totalScore
+        );
+
+
+        // ====================================
+        // 回答済み地点として保存
+        // ====================================
+
+        answeredSpots.push(spotName);
+
+        localStorage.setItem(
+            "answeredSpots",
+            JSON.stringify(answeredSpots)
+        );
+
+
+        // ====================================
+        // クイズ画面を消す
+        // ====================================
+
+        document.querySelector(".quiz-container").style.display =
+            "none";
+
+
+        // ====================================
+        // スコア画面表示
+        // ====================================
+
+        document.getElementById("scoreScreen")
+            .classList.remove("hidden");
+
+
+        document.getElementById("scoreText").textContent =
+            `${quizzes.length}問中 ${score}問正解（今回 ${quizScore}点）`;
+    }
+}
