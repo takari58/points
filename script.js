@@ -124,7 +124,6 @@ const spots2 =[
         lat: 37.954201, 
         lng:139.332605,
         radius: 50,
-        //image:"castle.png"
         unlockPoint:0
     },
     {
