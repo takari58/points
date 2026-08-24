@@ -154,119 +154,35 @@ const quizData = {
           explanation:"店内からは枯山水の日本庭園を眺めることができます" }
     ],
 };
-/*
-// ===== URL取得 =====
-const params = new URLSearchParams(window.location.search);
-const spotName = params.get("spot");
 
-document.getElementById("title").textContent = spotName + " クイズ";
-
-const quizzes = quizData[spotName];
-
-let index = 0;
-let score = 0;
-const POINT = 20;
-
-// ===== 問題表示 =====
-function showQuiz() {
-    document.getElementById("result").textContent = "";
-    document.getElementById("explanation").textContent = "";
-    document.getElementById("quizBox").textContent = quizzes[index].q;
-}
-
-showQuiz();
-
-// ===== 回答 =====
-function answer(userAnswer) {
-    const quiz = quizzes[index];
-    const correct = quiz.a;
-
-    if (userAnswer === correct) {
-        document.getElementById("result").textContent = "正解！";
-        score++;
-    } else {
-        document.getElementById("result").textContent = "不正解…";
-    }
-    //解説表示
-    document.getElementById("explanation").textContent =
-        "解説： " + quiz.explanation;
-
-    index++;
-
-    if (index < quizzes.length) {
-        setTimeout(showQuiz, 1000);
-    } else {
-        setTimeout(showScore, 2500);
-    }
-}
-
-// ===== スコア表示 =====
-function showScore() {
-    //クイズ画面を消す
-    document.querySelector(".quiz-container").style.display = "none";
-
-    //スコア表示画面
-    document.getElementById("scoreScreen").classList.remove("hidden");
-    
-    const totalScore = score * POINT; // ★ 点数計算
-
-    document.getElementById("scoreText").textContent =
-        `${quizzes.length}問中 ${score}問正解（${totalScore}点）`;
-
-}
-*/
-
-
-// ========================================
 // URLからランドマーク名を取得
-// ========================================
 
 const params = new URLSearchParams(window.location.search);
 const spotName = params.get("spot");
 
-
-// ========================================
 // 回答済み地点を取得
-// ========================================
 
 // localStorageから回答済み地点を取得
 let answeredSpots =
     JSON.parse(localStorage.getItem("answeredSpots")) || [];
 
-
-// ========================================
 // この地点をすでに回答しているか確認
-// ========================================
 
 if (answeredSpots.includes(spotName)) {
-
     document.querySelector(".quiz-container").style.display = "none";
-
     const scoreScreen = document.getElementById("scoreScreen");
-
     scoreScreen.classList.remove("hidden");
-
     document.getElementById("scoreText").textContent =
         `${spotName}のクイズはすでに回答済みです。`;
-
 } else {
-
     startQuiz();
-
 }
-
-
-// ========================================
 // クイズ開始
-// ========================================
-
 function startQuiz() {
-
     document.getElementById("title").textContent =
         spotName + " クイズ";
-
     const quizzes = quizData[spotName];
-
+    
     // クイズが存在しない場合
     if (!quizzes) {
         document.getElementById("quizBox").textContent =
@@ -282,93 +198,59 @@ function startQuiz() {
     // 1問20点
     const POINT = 320;
 
-
-    // ========================================
-    // 問題表示
-    // ========================================
-
+    // 問題
     function showQuiz() {
-
         document.getElementById("result").textContent = "";
-
         document.getElementById("explanation").textContent = "";
-
         document.getElementById("quizBox").textContent =
             quizzes[index].q;
     }
 
-
     // 最初の問題を表示
     showQuiz();
 
-
-    // ========================================
     // 回答
-    // ========================================
-
     window.answer = function(userAnswer) {
-
         const quiz = quizzes[index];
-
         const correct = quiz.a;
-
 
         // 正解判定
         if (userAnswer === correct) {
-
             document.getElementById("result").textContent =
                 "正解！";
-
             score++;
-
         } else {
-
             document.getElementById("result").textContent =
                 "不正解…";
         }
-
 
         // 解説表示
         document.getElementById("explanation").textContent =
             "解説： " + quiz.explanation;
 
-
         // 次の問題へ
         index++;
 
-
         if (index < quizzes.length) {
-
             setTimeout(showQuiz, 1000);
-
         } else {
-
-            setTimeout(showScore, 2500);
+            setTimeout(showScore, 1500);
         }
     };
 
-
-    // ========================================
     // スコア表示
-    // ========================================
-
     function showScore() {
 
         // 今回のクイズで獲得した点数
         const quizScore = score * POINT;
 
-
-        // ====================================
         // 合計得点を取得
-        // ====================================
 
         let totalScore =
             Number(localStorage.getItem("totalScore")) || 0;
 
-
         // 今回の得点を加算
         totalScore += quizScore;
-
 
         // localStorageに保存
         localStorage.setItem(
@@ -376,34 +258,22 @@ function startQuiz() {
             totalScore
         );
 
-
-        // ====================================
         // 回答済み地点として保存
-        // ====================================
-
         answeredSpots.push(spotName);
-
         localStorage.setItem(
             "answeredSpots",
             JSON.stringify(answeredSpots)
         );
 
-
-        // ====================================
         // クイズ画面を消す
-        // ====================================
 
         document.querySelector(".quiz-container").style.display =
             "none";
 
-
-        // ====================================
         // スコア画面表示
-        // ====================================
 
         document.getElementById("scoreScreen")
             .classList.remove("hidden");
-
 
         document.getElementById("scoreText").textContent =
             `${quizzes.length}問中 ${score}問正解（今回 ${quizScore}点）`;
