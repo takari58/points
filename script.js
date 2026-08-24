@@ -6,7 +6,6 @@ const spots = [
         lat: 37.958972,  
         lng:139.339891,
         radius: 50,
-        //image:"castle.png"
     },
     {
         name: "新発田城跡",        //ランドマーク名称
@@ -20,36 +19,42 @@ const spots = [
         lat: 37.943791,
         lng: 139.328785,
         radius: 50,
+        image:"image/simizu.jpg"
     },
     {
         name: "蔵春閣",
         lat: 37.94389807273562,
         lng: 139.3317142467578,
-        radius: 20
+        radius: 20,
+        image:"image/simizu.jpg"
     },
     {
         name: "東公園のSL",
         lat: 37.94371455113034,
         lng: 139.33219327519282,
         radius: 20,
+        image:"image/simizu.jpg"
     },
     {
         name: "諏訪神社",
         lat: 37.944214,
         lng: 139.332004,
         radius: 20,
+        image:"image/simizu.jpg"
     },
     {
         name: "新発田市役所",
         lat: 37.947839,
         lng: 139.327160,
         radius: 30,
+        image:"image/simizu.jpg"
     },
     {
         name: "王紋酒造",
         lat: 37.94436989072327,
         lng: 139.33066511399528,
         radius: 30,
+        image:"image/simizu.jpg"
     },
     {
         name: "五十公野公園",
@@ -63,6 +68,7 @@ const spots = [
         lat: 37.950246,
         lng: 139.338618,
         radius: 45,
+        image:"image/simizu.jpg"
     },
     {
         name: "新発田駅",
@@ -76,30 +82,35 @@ const spots = [
         lat: 37.953545,
         lng: 139.3549475,
         radius: 50,
+        image:"image/simizu.jpg"
     },
     {
         name: "イクネスしばた",
         lat: 37.944357,
         lng: 139.333388,
         radius: 30,
+        image:"image/simizu.jpg"
     },
     {
         name: "市民文化会館",
         lat: 37.951722,
         lng:139.326564,
         radius: 30,
+        image:"image/simizu.jpg"
     },
     {
         name: "新発田歴史図書館",
         lat: 37.951279909157336,
         lng: 139.32774756292181,
         radius: 30,
+        image:"image/simizu.jpg"
     },
     {
         name: "旧新発田市役所",
         lat: 37.950883,
         lng: 139.327898,
         radius: 30,
+        image:"image/simizu.jpg"
     },
     {
         name: "新潟職能短大",
@@ -113,6 +124,7 @@ const spots = [
         lat: 37.960376479226,
         lng: 139.35429135822383,
         radius: 30,
+        image:"image/simizu.jpg"
     }
 ];
 
@@ -130,43 +142,50 @@ const spots2 =[
       name: "藤倉メンチカツや",
       lat: 37.93682,
       lng: 139.34488,
-      unlockPoint:480
+      unlockPoint:480,
+     image:"image/simizu.jpg"
     },
     {
       name: "ボン・タケダ",
       lat: 37.94039, 
       lng: 139.33600,
-      unlockPoint:960
+      unlockPoint:960,
+      image:"image/simizu.jpg"
     }, 
     {
       name: "いっぷく",
       lat: 37.94437654050752, 
       lng: 139.3407439626735,
-      unlockPoint:1440
+      unlockPoint:1440,
+      image:"image/simizu.jpg"
     },
     {
       name: "文化洋食ino",
       lat: 37.96236411397717, 
       lng: 139.33428189358867 ,
-      unlockPoint:1920
+      unlockPoint:1920,
+      image:"image/simizu.jpg"
     },
     {
       name: "やすけカレー",
       lat: 37.93774827263629, 
       lng: 139.33615892651278 ,
-      unlockPoint:2400
+      unlockPoint:2400,
+      image:"image/simizu.jpg"
     },
     {
       name: "激レア６",
       lat: 37.93774827263629, 
       lng: 139.33615892651278 ,
-      unlockPoint:2880
+      unlockPoint:2880,
+      image:"image/simizu.jpg"
     },
     {
       name: "激レア７",
       lat: 37.93774827263629, 
       lng: 139.33615892651278 ,
-       unlockPoint:3360
+      unlockPoint:3360,
+      image:"image/simizu.jpg"
     },
 ]
 
