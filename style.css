@@ -5,7 +5,7 @@ body {
 
 /* 地図 */
 #map {
-    height: 300px;
+    height: 350px;
     width: 90%;
     margin: auto;
     border: 2px solid black;
