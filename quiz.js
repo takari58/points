@@ -212,18 +212,14 @@ const quizData = {
 };
 
 // URLからランドマーク名を取得
-
 const params = new URLSearchParams(window.location.search);
 const spotName = params.get("spot");
-
-// 回答済み地点を取得
 
 // localStorageから回答済み地点を取得
 let answeredSpots =
     JSON.parse(localStorage.getItem("answeredSpots")) || [];
 
 // この地点をすでに回答しているか確認
-
 if (answeredSpots.includes(spotName)) {
     document.querySelector(".quiz-container").style.display = "none";
     const scoreScreen = document.getElementById("scoreScreen");
@@ -247,11 +243,11 @@ function startQuiz() {
     }
 
     let index = 0;
-
     // このクイズでの正解数
     let score = 0;
 
     // 1問20点
+    //最終的には20点 製作途中用に値を変更
     const POINT = 320;
 
     // 問題
@@ -301,7 +297,6 @@ function startQuiz() {
         const quizScore = score * POINT;
 
         // 合計得点を取得
-
         let totalScore =
             Number(localStorage.getItem("totalScore")) || 0;
 
@@ -322,12 +317,10 @@ function startQuiz() {
         );
 
         // クイズ画面を消す
-
         document.querySelector(".quiz-container").style.display =
             "none";
 
         // スコア画面表示
-
         document.getElementById("scoreScreen")
             .classList.remove("hidden");
 
