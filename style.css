@@ -1,3 +1,14 @@
+header{
+    background:orange;
+    color:white;
+    text-align:center;
+    padding:15px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+header h1{
+    font-size:24px;
+}
+
 body {
     font-family: Arial;
     text-align: center;
