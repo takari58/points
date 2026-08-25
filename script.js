@@ -235,7 +235,7 @@ spots.forEach(spot => {
     //クイズ出題可能範囲の円(通常スポット)
     L.circle([spot.lat, spot.lng], {
         radius: spot.radius,
-        color: 'red',
+        color: 'blue',
         fillOpacity: 0.2
     }).addTo(map);
 });
