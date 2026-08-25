@@ -195,6 +195,7 @@ const spots2 =[
       unlockPoint:2400,
       image:"yasuke/castle.png"
     },
+    /*
     {
       name: "激レア６",
       lat: 37.93774827263629, 
@@ -211,6 +212,7 @@ const spots2 =[
       unlockPoint:3360,
       image:"image/castle.png"
     },
+    */
 ]
 // ====== 地図初期化（中心を新富町に） ======
 const map = L.map('map').setView([37.9555, 139.3400], 15);
