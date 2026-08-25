@@ -23,7 +23,7 @@ body {
 /* 地図 */
 #map {
     height: 350px;
-    width: 90%;
+    width: 95%;
     margin: auto;
     border: 2px solid black;
 }
