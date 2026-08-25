@@ -1,3 +1,9 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 header{
     background:orange;
     color:white;
@@ -71,4 +77,11 @@ body {
 
 #resetButton:hover {
     background-color: #333;
+}
+
+@media screen and (max-width:768px){
+
+    header h1{
+        font-size:24px;
+    }
 }
