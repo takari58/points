@@ -1,12 +1,21 @@
 // ランドマーク一覧
 const spots = [
     {
+        name: "テスト1",
+        //自宅用 激レアスポット
+        lat: 37.954201, 
+        lng:139.332605,
+        radius: 150,
+        unlockPoint:0
+    },
+    /*{
         name: "テスト2",
         //学校用 通常スポット
         lat: 37.958972,  
         lng:139.339891,
         radius: 50,
-    },
+        //image:"castle.png"
+    },*/
     {
         name: "新発田城跡",        //ランドマーク名称
         lat: 37.954824724542696,   //緯度
@@ -26,7 +35,7 @@ const spots = [
         lat: 37.94389807273562,
         lng: 139.3317142467578,
         radius: 20,
-        image:"image/simizu.jpg"
+        image:"image/zoushunkaku.jpg"
     },
     {
         name: "東公園のSL",
@@ -40,21 +49,21 @@ const spots = [
         lat: 37.944214,
         lng: 139.332004,
         radius: 20,
-        image:"image/simizu.jpg"
+        image:"image/suwa.jpg"
     },
     {
         name: "新発田市役所",
         lat: 37.947839,
         lng: 139.327160,
         radius: 30,
-        image:"image/simizu.jpg"
+        image:"image/castle.png"
     },
     {
         name: "王紋酒造",
         lat: 37.94436989072327,
         lng: 139.33066511399528,
         radius: 30,
-        image:"image/simizu.jpg"
+        image:"image/castle.png"
     },
     {
         name: "五十公野公園",
@@ -68,7 +77,7 @@ const spots = [
         lat: 37.950246,
         lng: 139.338618,
         radius: 45,
-        image:"image/simizu.jpg"
+        image:"image/castle.png"
     },
     {
         name: "新発田駅",
@@ -82,7 +91,7 @@ const spots = [
         lat: 37.953545,
         lng: 139.3549475,
         radius: 50,
-        image:"image/simizu.jpg"
+        image:"image/castle.png"
     },
     {
         name: "イクネスしばた",
@@ -96,21 +105,21 @@ const spots = [
         lat: 37.951722,
         lng:139.326564,
         radius: 30,
-        image:"image/simizu.jpg"
+        image:"image/castle.png"
     },
     {
         name: "新発田歴史図書館",
         lat: 37.951279909157336,
         lng: 139.32774756292181,
         radius: 30,
-        image:"image/simizu.jpg"
+        image:"image/castle.png"
     },
     {
         name: "旧新発田市役所",
         lat: 37.950883,
         lng: 139.327898,
         radius: 30,
-        image:"image/simizu.jpg"
+        image:"image/castle.png"
     },
     {
         name: "新潟職能短大",
@@ -124,71 +133,85 @@ const spots = [
         lat: 37.960376479226,
         lng: 139.35429135822383,
         radius: 30,
-        image:"image/simizu.jpg"
+        image:"image/castle.png"
     }
 ];
 
 //激レアランドマーク
 const spots2 =[
-    {
+    /*{
         name: "テスト1",
         //自宅用 激レアスポット
         lat: 37.954201, 
         lng:139.332605,
         radius: 150,
         unlockPoint:0
+    },*/
+    {
+        name: "テスト2",
+        //学校用 通常スポット
+        lat: 37.958972,  
+        lng:139.339891,
+        radius: 50,
+        //image:"castle.png"
     },
     {
       name: "藤倉メンチカツや",
       lat: 37.93682,
       lng: 139.34488,
+      radius:50,
       unlockPoint:480,
-     image:"image/simizu.jpg"
+      image:"image/castle.png"
     },
     {
       name: "ボン・タケダ",
       lat: 37.94039, 
       lng: 139.33600,
+      radius: 50,
       unlockPoint:960,
-      image:"image/simizu.jpg"
+      image:"image/castle.png"
     }, 
     {
       name: "いっぷく",
       lat: 37.94437654050752, 
       lng: 139.3407439626735,
+      radius: 50,
       unlockPoint:1440,
-      image:"image/simizu.jpg"
+      image:"image/castle.png"
     },
     {
       name: "文化洋食ino",
       lat: 37.96236411397717, 
       lng: 139.33428189358867 ,
+      radius: 50,
       unlockPoint:1920,
-      image:"image/simizu.jpg"
+      image:"image/castle.png"
     },
     {
       name: "やすけカレー",
       lat: 37.93774827263629, 
       lng: 139.33615892651278 ,
+      radius: 50,
       unlockPoint:2400,
-      image:"image/simizu.jpg"
+      image:"yasuke/castle.png"
     },
     {
       name: "激レア６",
       lat: 37.93774827263629, 
       lng: 139.33615892651278 ,
+      radius: 50,
       unlockPoint:2880,
-      image:"image/simizu.jpg"
+      image:"image/castle.png"
     },
     {
       name: "激レア７",
       lat: 37.93774827263629, 
       lng: 139.33615892651278 ,
+      radius: 50,
       unlockPoint:3360,
-      image:"image/simizu.jpg"
+      image:"image/castle.png"
     },
 ]
-
 // ====== 地図初期化（中心を新富町に） ======
 const map = L.map('map').setView([37.9555, 139.3400], 15);
 
@@ -209,7 +232,7 @@ spots.forEach(spot => {
     L.marker([spot.lat, spot.lng]).addTo(map)
         .bindPopup(popupContent);
 
-    //クイズ出題可能範囲の円
+    //クイズ出題可能範囲の円(通常スポット)
     L.circle([spot.lat, spot.lng], {
         radius: spot.radius,
         color: 'red',
@@ -218,7 +241,6 @@ spots.forEach(spot => {
 });
 
 // 激レアランドマークの解放・表示
-
 function updateRareSpots() {
     const totalScore =
         Number(localStorage.getItem("totalScore")) || 0;
@@ -242,7 +264,7 @@ function updateRareSpots() {
         // 回答済みかどうか
         const answered =
             answeredSpots.includes(spot.name);
-
+        //激レアのピンは☆になってる
         const marker = L.marker([
             spot.lat,
             spot.lng
@@ -255,19 +277,24 @@ function updateRareSpots() {
             })
         }).addTo(map);
 
+        //激レアの回答可能範囲
+        L.circle([spot.lat, spot.lng], {
+            radius: spot.radius,
+            color: 'gold',
+            fillColor: 'gold',
+            fillOpacity: 0.2
+        }).addTo(map);
+
         let popupContent;
 
         if (answered) {
-
             popupContent = `
                 <div style="text-align:center;">
                     <h3>★ ${spot.name}</h3>
                     <p>回答済み</p>
                 </div>
             `;
-
         } else {
-
             popupContent = `
                 <div style="text-align:center;">
                     <h3>★ ${spot.name}</h3>
@@ -283,7 +310,6 @@ function updateRareSpots() {
         spot.marker = marker;
     });
 }
-
 
 // ページ読み込み時に確認
 updateRareSpots();
@@ -330,17 +356,38 @@ document.getElementById("coords").innerHTML = `
 
     let found = false;
 
+    //通常スポット
     spots.forEach(spot => {
         const distance = getDistance(userLat, userLng, spot.lat, spot.lng);
 
         // ランドマーク到着時の表示テキスト&クイズ画面へ移動
         //if (!visitedSpots.has(spot.name) && distance <= spot.radius) {
         if (!answeredSpots.includes(spot.name) && distance <= spot.radius) {
-
             found = true;
-
             document.getElementById("result").innerHTML = `
                 <b>${spot.name}に到達！</b><br>
+                <a href="quiz.html?spot=${encodeURIComponent(spot.name)}">クイズへ</a>
+            `;
+        }
+    });
+
+    //激レアスポット
+    spots2.forEach(spot => {
+    const totalScore =
+    Number(localStorage.getItem("totalScore")) || 0;
+
+        // まだ必要得点に達していない場合は無視
+        if (totalScore < spot.unlockPoint) {
+            return;
+        }
+        const distance =getDistance(userLat,userLng,spot.lat,spot.lng);
+        if (
+            !answeredSpots.includes(spot.name) &&
+            distance <= spot.radius
+        ) {
+            found = true;
+            document.getElementById("result").innerHTML = `
+                <b>★ ${spot.name}に到達！</b><br>
                 <a href="quiz.html?spot=${encodeURIComponent(spot.name)}">クイズへ</a>
             `;
         }
@@ -358,15 +405,11 @@ document.getElementById("coords").innerHTML = `
 // 合計得点を表示
 
 function updateTotalScore() {
-    
     const totalScore =
         Number(localStorage.getItem("totalScore")) || 0;
-
     const scoreElement =
         document.getElementById("totalScore");
-
     if (scoreElement) {
-
         scoreElement.textContent =
             `現在の得点：${totalScore}点`;
     }
