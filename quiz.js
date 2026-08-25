@@ -248,7 +248,7 @@ function startQuiz() {
 
     // 1問20点
     //最終的には20点 製作途中用に値を変更
-    const POINT = 320;
+    const POINT = 1000;
 
     // 問題
     function showQuiz() {
