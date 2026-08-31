@@ -188,6 +188,14 @@ const spots2 =[
       unlockPoint:3360,
       image:"image/castle.png"
     },
+    {
+      name: "レストラン蒲城",
+      lat: 37.95049684, 
+      lng: 139.3394747,
+      radius: 50,
+      unlockPoint:3360,
+      image:"image/castle.png"
+    }
 ]
 // 現在地用アイコン
 const userIcon = L.icon({
