@@ -1,20 +1,44 @@
+// ランドマーク到達時にゲットするポイント
+const landmarkPoints = {
+    "テスト": 100,
+
+    "新発田城跡": 480,
+    "清水園": 100,
+    "蔵春閣": 100,
+    "東公園のSL": 100,
+    "諏訪神社": 100,
+    "市役所": 100,
+    "王紋酒造": 100,
+    "五十公野公園": 480,
+    "カルチャーセンター": 100,
+    "新発田駅": 100,
+    "あやめの湯": 100,
+    "イクネスしばた": 100,
+    "市民文化会館": 100,
+    "新発田歴史図書館": 100,
+    "旧新発田市役所": 100,
+    "新潟職能短大": 100,
+    "菊水": 100,
+
+    // 激レア
+    "藤倉メンチカツや": 110,
+    "ボン・タケダ": 110,
+    "いっぷく": 110,
+    "文化洋食ino": 110,
+    "やすけカレー": 110,
+    "堀部安兵衛 生誕の碑": 110,
+    "大倉喜八郎 生誕の地碑": 110
+};
+
 // ランドマークごとのクイズ(17か所×3問)
 const quizData = {
-    "テスト1": [
-        { q: "テスト用////////新発田城は花の名前にちなんで別名「あやめ城」と呼ばれる", a: true,
-          explanation:"かつて城周辺に湿地が多く自生したあやめが多かったことに由来しています" },
-        { q: "新発田城の屋根には二匹のシャチホコが乗っている", a: false,
-          explanation:"三階櫓の屋根の形はT字型になっており、全国でも珍しい3匹のシャチホコが乗っています" },
-        { q: "新発田城は国の重要文化財に指定されている", a: true,
-          explanation:"「表門」と「旧二の丸偶櫓」が重要文化財に指定されています" }
-    ],
-    "テスト2": [
-        { q: "テスト用////////新発田城は花の名前にちなんで別名「あやめ城」と呼ばれる", a: true,
-          explanation:"かつて城周辺に湿地が多く自生したあやめが多かったことに由来しています" },
-        { q: "新発田城の屋根には二匹のシャチホコが乗っている", a: false,
-          explanation:"三階櫓の屋根の形はT字型になっており、全国でも珍しい3匹のシャチホコが乗っています" },
-        { q: "新発田城は国の重要文化財に指定されている", a: true,
-          explanation:"「表門」と「旧二の丸偶櫓」が重要文化財に指定されています" }
+    "テスト": [
+        { q: "テスト用/1問1200点/回答：〇", a: true,
+          explanation:"問題解説" },
+        { q: "テスト用/1問1200点/回答：×", a: false,
+          explanation:"問題解説" },
+        { q: "テスト用/1問1200点/回答：〇", a: true,
+          explanation:"問題解説" }
     ],
     "新発田城跡": [
         { q: "新発田城は花の名前にちなんで別名「あやめ城」と呼ばれる", a: true,
@@ -34,7 +58,7 @@ const quizData = {
     ],
     "蔵春閣": [
         { q: "蔵春閣はもともと新発田市に建てられた建物である。", a: false,
-          explanation:"東京の向島、隅田川沿いに建てられた大蔵喜八郎の別邸です" },
+          explanation:"東京の向島、隅田川沿いに建てられた大倉喜八郎の別邸です" },
         { q: "蔵春閣には、歴代総理大臣や渋沢栄一が訪れたとされている", a: true,
           explanation:"賓客をもてなす迎賓館として使用され、政財界の重鎮や海外の賓客が訪れました" },
         { q: "蔵春閣は見学だけでなく、一部の部屋を借りて利用することができる", a: true,
@@ -193,25 +217,26 @@ const quizData = {
         { q: "店内はカウンター席、テーブル席、座敷席がある", a: true,
           explanation:"お店に入ったら注文を済ませてから空いている座席に座ります" }
     ],
-    "6": [
-        { q: "菊水酒造は明治時代に創業した酒蔵である", a: true,
-          explanation:"ちなみに、菊水の酒銘は不老長寿を謳った「菊慈童」という能楽に起源があります" },
-        { q: "菊水日本酒文化研究所は一般公開されていない", a: false,
-          explanation:"蔵での醸造工程見学と日本酒文化に触れる蔵見学を楽しむことができます" },
-        { q: "麴や酒粕を利用したスイーツやオリジナルドリンクが楽しめるカフェがある", a: true,
-          explanation:"店内からは枯山水の日本庭園を眺めることができます" }
+    "堀部安兵衛 生誕の碑": [
+        { q: "堀部安兵衛は高田馬場の決闘で名をあげたことで知られている", a: true,
+          explanation:"高田馬場の決闘で助太刀し、多く敵を討ったことから名が広まったとされています" },
+        { q: "堀部安兵衛の菩提寺は新発田市の宝光寺である", a: false,
+          explanation:"堀部安兵衛の菩提寺は長徳寺、宝光寺は柴田藩主・溝口家の菩提寺です" },
+        { q: "新発田城には堀部安兵衛の名前にちなんだ「安兵衛茶屋」がある", a: true,
+          explanation:"新発田城の真向かいにあり、観光案内や休憩所として利用されている" }
     ],
-    "7": [
-        { q: "菊水酒造は明治時代に創業した酒蔵である", a: true,
-          explanation:"ちなみに、菊水の酒銘は不老長寿を謳った「菊慈童」という能楽に起源があります" },
-        { q: "菊水日本酒文化研究所は一般公開されていない", a: false,
-          explanation:"蔵での醸造工程見学と日本酒文化に触れる蔵見学を楽しむことができます" },
-        { q: "麴や酒粕を利用したスイーツやオリジナルドリンクが楽しめるカフェがある", a: true,
-          explanation:"店内からは枯山水の日本庭園を眺めることができます" }
+    "大倉喜八郎 生誕の地碑": [
+        { q: "国内の発展に努め、海外へ行ったことはなかった", a: false,
+          explanation:"欧米を視察し、海外との貿易にも積極的に取り組みました" },
+        { q: "大倉喜八郎は大倉財閥の創設者である", a: true,
+          explanation:"建設・製鉄・科学・繊維・食品など幅広い事業を展開し、大倉財閥を築きました" },
+        { q: "現在の一万円札になっている渋沢栄一とも一緒に事業を行った", a: true,
+          explanation:"二人は親しい盟友で、東京商法会議所・帝国ホテル・東京電灯・札幌麦酒など様々な事業で協力しあっていた" }
     ],
 };
 
 // URLからランドマーク名を取得
+
 const params = new URLSearchParams(window.location.search);
 const spotName = params.get("spot");
 
@@ -220,7 +245,9 @@ let answeredSpots =
     JSON.parse(localStorage.getItem("answeredSpots")) || [];
 
 // この地点をすでに回答しているか確認
+
 if (answeredSpots.includes(spotName)) {
+
     document.querySelector(".quiz-container").style.display = "none";
     const scoreScreen = document.getElementById("scoreScreen");
     scoreScreen.classList.remove("hidden");
@@ -229,12 +256,16 @@ if (answeredSpots.includes(spotName)) {
 } else {
     startQuiz();
 }
-// クイズ開始
+
+// クイズ
+
 function startQuiz() {
+
     document.getElementById("title").textContent =
         spotName + " クイズ";
+
     const quizzes = quizData[spotName];
-    
+
     // クイズが存在しない場合
     if (!quizzes) {
         document.getElementById("quizBox").textContent =
@@ -243,14 +274,15 @@ function startQuiz() {
     }
 
     let index = 0;
+
     // このクイズでの正解数
     let score = 0;
 
     // 1問20点
-    //最終的には20点 製作途中用に値を変更
-    const POINT = 2000;
+    const POINT = 1200;
 
-    // 問題
+    // 問題表示
+
     function showQuiz() {
         document.getElementById("result").textContent = "";
         document.getElementById("explanation").textContent = "";
@@ -262,7 +294,9 @@ function startQuiz() {
     showQuiz();
 
     // 回答
+
     window.answer = function(userAnswer) {
+
         const quiz = quizzes[index];
         const correct = quiz.a;
 
@@ -276,7 +310,7 @@ function startQuiz() {
                 "不正解…";
         }
 
-        // 解説表示
+
         document.getElementById("explanation").textContent =
             "解説： " + quiz.explanation;
 
@@ -292,16 +326,20 @@ function startQuiz() {
 
     // スコア表示
     function showScore() {
-
-        // 今回のクイズで獲得した点数
+      //クイズの得点
         const quizScore = score * POINT;
+      //ランドマーク到達時の得点
+        const landmarkPoint =
+          landmarkPoints[spotName] || 0;
+      //今回の総獲得点
+        const earnedScore=quizScore + landmarkPoint;
 
         // 合計得点を取得
         let totalScore =
             Number(localStorage.getItem("totalScore")) || 0;
 
         // 今回の得点を加算
-        totalScore += quizScore;
+        totalScore += earnedScore;
 
         // localStorageに保存
         localStorage.setItem(
@@ -311,6 +349,7 @@ function startQuiz() {
 
         // 回答済み地点として保存
         answeredSpots.push(spotName);
+
         localStorage.setItem(
             "answeredSpots",
             JSON.stringify(answeredSpots)
@@ -324,7 +363,12 @@ function startQuiz() {
         document.getElementById("scoreScreen")
             .classList.remove("hidden");
 
-        document.getElementById("scoreText").textContent =
-            `${quizzes.length}問中 ${score}問正解（今回 ${quizScore}点）`;
+    // 結果表示
+    document.getElementById("scoreText").innerHTML = `
+        ${quizzes.length}問中 ${score}問正解<br>
+        クイズ得点：${quizScore}点<br>
+        ランドマークボーナス：${landmarkPoint}点<br>
+        <strong>今回の獲得得点：${earnedScore}点</strong>
+    `;
     }
 }
