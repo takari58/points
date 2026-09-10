@@ -19,7 +19,7 @@ const spots = [
         lat: 37.94389807273562,
         lng: 139.3317142467578,
         radius: 20,
-        image:"image/zoushunkaku.jpg"
+        image:"image/zoushunkaku.png"
     },
     {
         name: "東公園のSL",
@@ -33,21 +33,21 @@ const spots = [
         lat: 37.944214,
         lng: 139.332004,
         radius: 20,
-        image:"image/suwa.jpg"
+        image:"image/suwamon.jpg"
     },
     {
         name: "新発田市役所",
         lat: 37.947839,
         lng: 139.327160,
         radius: 30,
-        image:"image/castle.png"
+        image:"image/siyakusho.jpg"
     },
     {
         name: "王紋酒造",
         lat: 37.94436989072327,
         lng: 139.33066511399528,
         radius: 30,
-        image:"image/castle.png"
+        image:"image/sake.jpg"
     },
     {
         name: "五十公野公園",
@@ -61,7 +61,7 @@ const spots = [
         lat: 37.950246,
         lng: 139.338618,
         radius: 45,
-        image:"image/castle.png"
+        image:"image/culture.jpg"
     },
     {
         name: "新発田駅",
@@ -75,7 +75,7 @@ const spots = [
         lat: 37.953545,
         lng: 139.3549475,
         radius: 50,
-        image:"image/castle.png"
+        image:"image/ayame.jpg"
     },
     {
         name: "イクネスしばた",
@@ -89,14 +89,14 @@ const spots = [
         lat: 37.951722,
         lng:139.326564,
         radius: 30,
-        image:"image/castle.png"
+        image:"image/bunka.jpg"
     },
     {
         name: "新発田歴史図書館",
         lat: 37.951279909157336,
         lng: 139.32774756292181,
         radius: 30,
-        image:"image/castle.png"
+        image:"image/history.jpg"
     },
     {
         name: "旧新発田市役所",
@@ -117,8 +117,15 @@ const spots = [
         lat: 37.960376479226,
         lng: 139.35429135822383,
         radius: 30,
-        image:"image/castle.png"
-    }
+        image:"image/kikusui.jpg"
+    },
+    {
+      name: "ボン・タケダ",
+      lat: 37.94039, 
+      lng: 139.33600,
+      radius: 50,
+      image:"image/takeda.jpg"
+    }, 
 ];
 
 //激レアランドマーク
@@ -138,64 +145,48 @@ const spots2 =[
       lng: 139.34488,
       radius:50,
       unlockPoint:480,
-      image:"image/castle.png"
+      image:"image/menchi.jpg"
     },
-    {
-      name: "ボン・タケダ",
-      lat: 37.94039, 
-      lng: 139.33600,
-      radius: 50,
-      unlockPoint:960,
-      image:"image/castle.png"
-    }, 
     {
       name: "いっぷく",
       lat: 37.94437654050752, 
       lng: 139.3407439626735,
       radius: 50,
-      unlockPoint:1440,
-      image:"image/castle.png"
+      unlockPoint:960,
+      image:"image/ippuku.jpg"
     },
     {
       name: "文化洋食ino",
       lat: 37.96236411397717, 
       lng: 139.33428189358867 ,
       radius: 50,
-      unlockPoint:1920,
-      image:"image/castle.png"
+      unlockPoint:1440,
+      image:"image/ino.png"
     },
     {
       name: "やすけカレー",
       lat: 37.93774827263629, 
       lng: 139.33615892651278 ,
       radius: 50,
-      unlockPoint:2400,
+      unlockPoint:1920,
       image:"image/yasuke.jpg"
     },
     {
-      name: "堀部安兵衛 生誕の碑",
-      lat: 37.95290795, 
-      lng: 139.327346,
-      radius: 50,
-      unlockPoint:2880,
-      image:"image/castle.png"
-    },
-    {
-      name: "大倉喜八郎 生誕の地碑",
-      lat: 37.95010281, 
-      lng: 139.3218262,
-      radius: 50,
-      unlockPoint:3360,
-      image:"image/castle.png"
-    },
-    {
-      name: "レストラン蒲城",
+      name: "お食事処 蒲城",
       lat: 37.95049684, 
       lng: 139.3394747,
       radius: 50,
+      unlockPoint:2400,
+      image:"image/hojou.jpg"
+    },
+    {
+      name: "コーヒーマリーナ 煉瓦屋",
+      lat: 37.94901564395905,
+      lng: 139.3243217255289,
+      radius: 50,
       unlockPoint:3360,
-      image:"image/castle.png"
-    }
+      image:"image/renga.png"
+    },
 ]
 // 現在地用アイコン
 const userIcon = L.icon({
