@@ -103,7 +103,7 @@ const spots = [
         lat: 37.950883,
         lng: 139.327898,
         radius: 30,
-        image:"image/castle.png"
+        image:"image/kyuuyakusho.png"
     },
     {
         name: "新潟職能短大",
