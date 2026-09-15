@@ -19,15 +19,16 @@ const landmarkPoints = {
     "旧新発田市役所": 100,
     "新潟職能短大": 100,
     "菊水": 100,
+    "ボン・タケダ": 110,
 
     // 激レア
     "藤倉メンチカツや": 110,
-    "ボン・タケダ": 110,
     "いっぷく": 110,
     "文化洋食ino": 110,
     "やすけカレー": 110,
-    "堀部安兵衛 生誕の碑": 110,
-    "大倉喜八郎 生誕の地碑": 110
+    "お食事処 蒲城": 110,
+    "コーヒーマリーナ 煉瓦屋": 110
+    "パーラーやお屋": 110
 };
 
 // ランドマークごとのクイズ(17か所×3問)
@@ -168,6 +169,14 @@ const quizData = {
         { q: "麴や酒粕を利用したスイーツやオリジナルドリンクが楽しめるカフェがある", a: true,
           explanation:"店内からは枯山水の日本庭園を眺めることができます" }
     ],
+    "ボン・タケダ": [
+        { q: "名物のクレープは、中にクロワッサン生地が入っている", a: true,
+          explanation:"クレープのボリュームと食感が人気です" },
+        { q: "創業10年の新しいベーカリーである", a: false,
+          explanation:"創業60年以上の老舗ベーカリーです" },
+        { q: "米粉を使ったパンが販売されています", a: true,
+          explanation:"小麦アレルギーでも安心して新潟の米粉パンを楽しむことができます" }
+    ],
     //激レアも以下にクイズを作成
     "テスト": [
         { q: "テスト用/1問1200点/回答：〇", a: true,
@@ -184,14 +193,6 @@ const quizData = {
           explanation:"食堂を長男に引き継いだのを機に自宅で「藤倉メンチカツや」を開店しました" },
         { q: "越後モチ豚のトンカツは揚げたてを食べることができる", a: true,
           explanation:"注文をもらってから作られているため、揚げたてを持って帰ることができます" }
-    ],
-    "ボン・タケダ": [
-        { q: "名物のクレープは、中にクロワッサン生地が入っている", a: true,
-          explanation:"クレープのボリュームと食感が人気です" },
-        { q: "創業10年の新しいベーカリーである", a: false,
-          explanation:"創業60年以上の老舗ベーカリーです" },
-        { q: "米粉を使ったパンが販売されています", a: true,
-          explanation:"小麦アレルギーでも安心して新潟の米粉パンを楽しむことができます" }
     ],
     "いっぷく": [
         { q: "きんつばや手作りコロッケの他にもメニューがある", a: true,
@@ -217,29 +218,29 @@ const quizData = {
         { q: "店内はカウンター席、テーブル席、座敷席がある", a: true,
           explanation:"お店に入ったら注文を済ませてから空いている座席に座ります" }
     ],
-    "堀部安兵衛 生誕の碑": [
-        { q: "堀部安兵衛は高田馬場の決闘で名をあげたことで知られている", a: true,
-          explanation:"高田馬場の決闘で助太刀し、多く敵を討ったことから名が広まったとされています" },
-        { q: "堀部安兵衛の菩提寺は新発田市の宝光寺である", a: false,
-          explanation:"堀部安兵衛の菩提寺は長徳寺、宝光寺は柴田藩主・溝口家の菩提寺です" },
-        { q: "新発田城には堀部安兵衛の名前にちなんだ「安兵衛茶屋」がある", a: true,
-          explanation:"新発田城の真向かいにあり、観光案内や休憩所として利用されている" }
-    ],
-    "大倉喜八郎 生誕の地碑": [
-        { q: "国内の発展に努め、海外へ行ったことはなかった", a: false,
-          explanation:"欧米を視察し、海外との貿易にも積極的に取り組みました" },
-        { q: "大倉喜八郎は大倉財閥の創設者である", a: true,
-          explanation:"建設・製鉄・科学・繊維・食品など幅広い事業を展開し、大倉財閥を築きました" },
-        { q: "現在の一万円札になっている渋沢栄一とも一緒に事業を行った", a: true,
-          explanation:"二人は親しい盟友で、東京商法会議所・帝国ホテル・東京電灯・札幌麦酒など様々な事業で協力しあっていた" }
-    ],
-    "レストラン蒲城": [
+    "お食事処 蒲城": [
         { q: "カルチャーセンターの２階にあるお食事処である", a: true,
           explanation:"定食や丼もの、麺類、コーヒーの他にケーキセットなどのデザートも豊富となっています" },
         { q: "待ち合わせや小会議に利用できる", a: true,
           explanation:"スポーツ後にゆったりとした時間を過ごすこともできます" },
         { q: "テイクアウトはできない", a: false,
           explanation:"お持ち帰り用メニューが用意されていますが、事前予約が必要なので公式HPをご確認ください" }
+    ],
+    "コーヒーマリーナ 煉瓦屋": [
+        { q: "店内には船をイメージしたインテリアがある", a: true,
+          explanation:"マリーナという店名に合わせて舵輪などが飾られていたり、実際に船で使われていた照明を使ったりしています" },
+        { q: "前オーナーから累算して創業50年近くになっている", a: true,
+          explanation:"前オーナーが約10年営業し、現在のオーナーが引き継いでから40年近く営業されています" },
+        { q: "店内は煉瓦の壁や赤い椅子など、懐かしさを感じさせる暖色が基調になっている", a: true,
+          explanation:"店内の内装から提供されるメニューまで「昔ながらの喫茶店」を楽しむことができます。" }
+    ],
+    "パーラーやお屋":[
+        { q: "メニュー数が多く、迫力ある見た目のクレープなどを楽しむことができる", a: true,
+          explanation:"農産物直売所が運営しているため、新鮮でおいしい果物や野菜を楽しむことができます" },
+        { q: "店内に飲食スペースは無く、テイクアウトのみとなっている", a: false,
+          explanation:"店内にはカフェスペースがあるので、その場でスイーツやオリジナルグルメを楽しむことができます" },
+        { q: "旬の果物を使ったパフェやクレープが楽しめるフェアが開催される", a: true,
+          explanation:"これまでに桃や蓬莱柿、シャインマスカットのフェアが開催されています。フェアの詳細は公式instagramをご確認ください" }
     ]
 };
 
@@ -252,10 +253,8 @@ const spotName = params.get("spot");
 let answeredSpots =
     JSON.parse(localStorage.getItem("answeredSpots")) || [];
 
-// この地点をすでに回答しているか確認
-
+//解答済みか確認
 if (answeredSpots.includes(spotName)) {
-
     document.querySelector(".quiz-container").style.display = "none";
     const scoreScreen = document.getElementById("scoreScreen");
     scoreScreen.classList.remove("hidden");
@@ -266,31 +265,22 @@ if (answeredSpots.includes(spotName)) {
 }
 
 // クイズ
-
 function startQuiz() {
-
     document.getElementById("title").textContent =
         spotName + " クイズ";
-
     const quizzes = quizData[spotName];
-
-    // クイズが存在しない場合
+    // クイズがない場合
     if (!quizzes) {
         document.getElementById("quizBox").textContent =
             "この地点のクイズはありません。";
         return;
     }
-
     let index = 0;
-
     // このクイズでの正解数
     let score = 0;
-
     // 1問20点
     const POINT = 1200;
-
     // 問題表示
-
     function showQuiz() {
         document.getElementById("result").textContent = "";
         document.getElementById("explanation").textContent = "";
@@ -300,14 +290,10 @@ function startQuiz() {
 
     // 最初の問題を表示
     showQuiz();
-
     // 回答
-
     window.answer = function(userAnswer) {
-
         const quiz = quizzes[index];
         const correct = quiz.a;
-
         // 正解判定
         if (userAnswer === correct) {
             document.getElementById("result").textContent =
@@ -318,13 +304,11 @@ function startQuiz() {
                 "不正解…";
         }
 
-
         document.getElementById("explanation").textContent =
             "解説： " + quiz.explanation;
 
         // 次の問題へ
         index++;
-
         if (index < quizzes.length) {
             setTimeout(showQuiz, 1000);
         } else {
@@ -341,36 +325,28 @@ function startQuiz() {
           landmarkPoints[spotName] || 0;
       //今回の総獲得点
         const earnedScore=quizScore + landmarkPoint;
-
-        // 合計得点を取得
+      // 合計得点を取得
         let totalScore =
             Number(localStorage.getItem("totalScore")) || 0;
-
-        // 今回の得点を加算
+       // 今回の得点を加算
         totalScore += earnedScore;
-
         // localStorageに保存
         localStorage.setItem(
             "totalScore",
             totalScore
         );
-
         // 回答済み地点として保存
         answeredSpots.push(spotName);
-
         localStorage.setItem(
             "answeredSpots",
             JSON.stringify(answeredSpots)
         );
-
         // クイズ画面を消す
         document.querySelector(".quiz-container").style.display =
             "none";
-
         // スコア画面表示
         document.getElementById("scoreScreen")
             .classList.remove("hidden");
-
     // 結果表示
     document.getElementById("scoreText").innerHTML = `
         ${quizzes.length}問中 ${score}問正解<br>
