@@ -14,25 +14,21 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* タイトル */
 #title {
     font-size: 50px;
     margin-bottom: 20px;
 }
 
-/* 問題 */
 #quizBox {
     font-size: 60px;
     margin-bottom: 25px;
 }
 
-/* ボタン */
 .buttons {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
-
 button {
     width: 100px;
     height: 100px;
@@ -42,30 +38,23 @@ button {
     color: white;
     cursor: pointer;
 }
-
 .btn-true {
     background-color: #4CAF50;
 }
-
 .btn-false {
     background-color: #f44336;
 }
-
 button:hover {
     opacity: 0.8;
 }
-
 button:active {
     transform: scale(0.9);
 }
-
-/* 結果 */
 #result {
     margin-top: 20px;
     font-size: 50px;
 }
 
-/* スコア画面 */
 .hidden {
     display: none;
 }
