@@ -187,6 +187,14 @@ const spots2 =[
       unlockPoint:3360,
       image:"image/renga.png"
     },
+    {
+      name: "パーラーやお屋",
+      lat: 37.9584998,
+      lng: 139.3425282,
+      radius: 50,
+      unlockPoint:3360,
+      image:"image/やおや.png"
+    }
 ]
 // 現在地用アイコン
 const userIcon = L.icon({
@@ -196,7 +204,7 @@ const userIcon = L.icon({
     popupAnchor: [0, -40]
 });
 
-// ====== 地図初期化（中心を新富町に） ======
+// 地図初期化
 const map = L.map('map').setView([37.9555, 139.3400], 15);
 
 // タイル
@@ -227,17 +235,14 @@ spots.forEach(spot => {
 
 // 激レアランドマークの解放・表示
 function updateRareSpots() {
-
     const totalScore =
         Number(localStorage.getItem("totalScore")) || 0;
-
     const answeredSpots =
         JSON.parse(
             localStorage.getItem("answeredSpots")
         ) || [];
 
     spots2.forEach(spot => {
-
         // 必要得点未達
         if (totalScore < spot.unlockPoint) {
             return;
@@ -269,9 +274,7 @@ function updateRareSpots() {
             fillColor: 'gold',
             fillOpacity: 0.2
         }).addTo(map);
-
         let popupContent;
-
         if (answered) {
             popupContent = `
                 <div style="text-align:center;">
@@ -290,7 +293,6 @@ function updateRareSpots() {
         }
 
         marker.bindPopup(popupContent);
-
         // マーカーを保存
         spot.marker = marker;
     });
@@ -299,23 +301,18 @@ function updateRareSpots() {
 // ページ読み込み時に確認
 updateRareSpots();
 
-
-// ====== 距離計算 ======
+// 距離計算 
 function getDistance(lat1, lng1, lat2, lng2) {
     const R = 6371000;
     const toRad = x => x * Math.PI / 180;
-
     const dLat = toRad(lat2 - lat1);
     const dLng = toRad(lng2 - lng1);
-
     const a = Math.sin(dLat/2) ** 2 +
         Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
         Math.sin(dLng/2) ** 2;
-
     return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
-
-// ====== 現在地取得 ======
+// 現在地取得 
 let answeredSpots =
     JSON.parse(localStorage.getItem("answeredSpots")) || [];
 
@@ -389,9 +386,7 @@ document.getElementById("coords").innerHTML = `
         if (totalScore < spot.unlockPoint) {
             return;
         }
-
         const distance =getDistance(userLat,userLng,spot.lat,spot.lng);
-
         if (
             !answeredSpots.includes(spot.name) &&
             distance <= spot.radius
@@ -414,59 +409,43 @@ document.getElementById("coords").innerHTML = `
 }); 
 
 // 合計得点を表示
-
 function updateTotalScore() {
-
     const totalScore =
         Number(localStorage.getItem("totalScore")) || 0;
-
     const scoreElement =
         document.getElementById("totalScore");
-
     if (scoreElement) {
-
         scoreElement.textContent =
             `現在の得点：${totalScore}点`;
     }
-
     // 激レアスポットの解放状況を更新
     updateRareSpots();
 }
 
 // ページ読み込み時に得点を表示
-
 updateTotalScore();
-
 // 開発用：得点・回答履歴をリセット
-
 function resetGame() {
-
     const result =
         confirm(
             "得点と回答履歴をすべてリセットしますか？"
         );
-
     if (!result) {
         return;
     }
-
     // 得点を0にする
     localStorage.setItem(
         "totalScore",
         "0"
     );
-
     // 回答済み地点を空にする
     localStorage.setItem(
         "answeredSpots",
         JSON.stringify([])
     );
-
     alert("得点と回答履歴をリセットしました。");
-
     // 得点表示を更新
     updateTotalScore();
-
     // ページを再読み込み
     location.reload();
 }
