@@ -5,21 +5,21 @@ const spots = [
         lat: 37.954824724542696,   //緯度
         lng: 139.326001834219947,  //経度
         radius: 50,                //leaflet-circle-radius[m] 有効範囲
-        image:"image/castle.png"         //イメージ画像
+        image:"image/城.png"         //イメージ画像
     },
     {
         name: "清水園",
         lat: 37.943791,
         lng: 139.328785,
         radius: 50,
-        image:"image/simizu.jpg"
+        image:"image/清水園.jpg"
     },
     {
         name: "蔵春閣",
         lat: 37.94389807273562,
         lng: 139.3317142467578,
         radius: 20,
-        image:"image/zoushunkaku.png"
+        image:"image/蔵春閣.png"
     },
     {
         name: "東公園のSL",
@@ -33,98 +33,98 @@ const spots = [
         lat: 37.944214,
         lng: 139.332004,
         radius: 20,
-        image:"image/suwamon.jpg"
+        image:"image/諏訪神社.jpg"
     },
     {
         name: "新発田市役所",
         lat: 37.947839,
         lng: 139.327160,
         radius: 30,
-        image:"image/siyakusho.jpg"
+        image:"image/役所.jpg"
     },
     {
         name: "王紋酒造",
         lat: 37.94436989072327,
         lng: 139.33066511399528,
         radius: 30,
-        image:"image/sake.jpg"
+        image:"image/王紋.jpg"
     },
     {
         name: "五十公野公園",
         lat: 37.939869,
         lng: 139.356680,
         radius: 80,
-        image:"image/park.png",
+        image:"image/五十公野公園.png",
     },
     {
         name: "カルチャーセンター",
         lat: 37.950246,
         lng: 139.338618,
         radius: 45,
-        image:"image/culture.jpg"
+        image:"image/カルチャー.jpg"
     },
     {
         name: "新発田駅",
         lat: 37.94413,
         lng: 139.33510,
         radius: 35,
-        image:"image/station.png",
+        image:"image/駅.png",
     },
     {
         name: "あやめの湯",
         lat: 37.953545,
         lng: 139.3549475,
         radius: 50,
-        image:"image/ayame.jpg"
+        image:"image/あやめの湯.jpg"
     },
     {
         name: "イクネスしばた",
         lat: 37.944357,
         lng: 139.333388,
         radius: 30,
-        image:"image/ikunesu.jpg"
+        image:"image/イクネス.jpg"
     },
     {
         name: "市民文化会館",
         lat: 37.951722,
         lng:139.326564,
         radius: 30,
-        image:"image/bunka.jpg"
+        image:"image/文化会館.jpg"
     },
     {
         name: "新発田歴史図書館",
         lat: 37.951279909157336,
         lng: 139.32774756292181,
         radius: 30,
-        image:"image/history.jpg"
+        image:"image/歴史図書館.jpg"
     },
     {
         name: "旧新発田市役所",
         lat: 37.950883,
         lng: 139.327898,
         radius: 30,
-        image:"image/kyuuyakusho.png"
+        image:"image/旧役所.png"
     },
     {
         name: "新潟職能短大",
         lat: 37.956067,
         lng: 139.337938,
         radius:150,
-        image:"image/school.png",
+        image:"image/短大.png",
     },
     {
         name: "菊水",
         lat: 37.960376479226,
         lng: 139.35429135822383,
         radius: 30,
-        image:"image/kikusui.jpg"
+        image:"image/菊水.jpg"
     },
     {
       name: "ボン・タケダ",
       lat: 37.94039, 
       lng: 139.33600,
       radius: 50,
-      image:"image/takeda.jpg"
+      image:"image/タケダ.jpg"
     }, 
 ];
 
@@ -133,8 +133,10 @@ const spots2 =[
     {
         name: "テスト",
         //学校用 激レアスポット
-        lat: 37.958972,  
-        lng:139.339891,
+        //lat: 37.958972,  
+        //lng:139.339891,
+        lat:37.95693480157634, 
+        lng:139.3360638811011,
         radius: 50,
         unlockPoint:0,
         //image:"castle.png"
@@ -145,7 +147,7 @@ const spots2 =[
       lng: 139.34488,
       radius:50,
       unlockPoint:480,
-      image:"image/menchi.jpg"
+      image:"image/メンチカツ.jpg"
     },
     {
       name: "いっぷく",
@@ -153,7 +155,7 @@ const spots2 =[
       lng: 139.3407439626735,
       radius: 50,
       unlockPoint:960,
-      image:"image/ippuku.jpg"
+      image:"image/いっぷく.jpg"
     },
     {
       name: "文化洋食ino",
@@ -169,7 +171,7 @@ const spots2 =[
       lng: 139.33615892651278 ,
       radius: 50,
       unlockPoint:1920,
-      image:"image/yasuke.jpg"
+      image:"image/やすけ.jpg"
     },
     {
       name: "お食事処 蒲城",
@@ -177,7 +179,7 @@ const spots2 =[
       lng: 139.3394747,
       radius: 50,
       unlockPoint:2400,
-      image:"image/hojou.jpg"
+      image:"image/蒲城.jpg"
     },
     {
       name: "コーヒーマリーナ 煉瓦屋",
@@ -185,7 +187,7 @@ const spots2 =[
       lng: 139.3243217255289,
       radius: 50,
       unlockPoint:3360,
-      image:"image/renga.png"
+      image:"image/煉瓦屋.png"
     },
     {
       name: "パーラーやお屋",
@@ -194,7 +196,7 @@ const spots2 =[
       radius: 50,
       unlockPoint:3360,
       image:"image/やおや.png"
-    }
+    },
 ]
 // 現在地用アイコン
 const userIcon = L.icon({
@@ -204,7 +206,7 @@ const userIcon = L.icon({
     popupAnchor: [0, -40]
 });
 
-// 地図初期化
+// ====== 地図初期化（中心を新富町に） ======
 const map = L.map('map').setView([37.9555, 139.3400], 15);
 
 // タイル
@@ -235,14 +237,17 @@ spots.forEach(spot => {
 
 // 激レアランドマークの解放・表示
 function updateRareSpots() {
+
     const totalScore =
         Number(localStorage.getItem("totalScore")) || 0;
+
     const answeredSpots =
         JSON.parse(
             localStorage.getItem("answeredSpots")
         ) || [];
 
     spots2.forEach(spot => {
+
         // 必要得点未達
         if (totalScore < spot.unlockPoint) {
             return;
@@ -274,7 +279,9 @@ function updateRareSpots() {
             fillColor: 'gold',
             fillOpacity: 0.2
         }).addTo(map);
+
         let popupContent;
+
         if (answered) {
             popupContent = `
                 <div style="text-align:center;">
@@ -293,6 +300,7 @@ function updateRareSpots() {
         }
 
         marker.bindPopup(popupContent);
+
         // マーカーを保存
         spot.marker = marker;
     });
@@ -301,18 +309,23 @@ function updateRareSpots() {
 // ページ読み込み時に確認
 updateRareSpots();
 
-// 距離計算 
+
+// ====== 距離計算 ======
 function getDistance(lat1, lng1, lat2, lng2) {
     const R = 6371000;
     const toRad = x => x * Math.PI / 180;
+
     const dLat = toRad(lat2 - lat1);
     const dLng = toRad(lng2 - lng1);
+
     const a = Math.sin(dLat/2) ** 2 +
         Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
         Math.sin(dLng/2) ** 2;
+
     return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
-// 現在地取得 
+
+// ====== 現在地取得 ======
 let answeredSpots =
     JSON.parse(localStorage.getItem("answeredSpots")) || [];
 
@@ -386,7 +399,9 @@ document.getElementById("coords").innerHTML = `
         if (totalScore < spot.unlockPoint) {
             return;
         }
+
         const distance =getDistance(userLat,userLng,spot.lat,spot.lng);
+
         if (
             !answeredSpots.includes(spot.name) &&
             distance <= spot.radius
@@ -409,43 +424,59 @@ document.getElementById("coords").innerHTML = `
 }); 
 
 // 合計得点を表示
+
 function updateTotalScore() {
+
     const totalScore =
         Number(localStorage.getItem("totalScore")) || 0;
+
     const scoreElement =
         document.getElementById("totalScore");
+
     if (scoreElement) {
+
         scoreElement.textContent =
             `現在の得点：${totalScore}点`;
     }
+
     // 激レアスポットの解放状況を更新
     updateRareSpots();
 }
 
 // ページ読み込み時に得点を表示
+
 updateTotalScore();
+
 // 開発用：得点・回答履歴をリセット
+
 function resetGame() {
+
     const result =
         confirm(
             "得点と回答履歴をすべてリセットしますか？"
         );
+
     if (!result) {
         return;
     }
+
     // 得点を0にする
     localStorage.setItem(
         "totalScore",
         "0"
     );
+
     // 回答済み地点を空にする
     localStorage.setItem(
         "answeredSpots",
         JSON.stringify([])
     );
+
     alert("得点と回答履歴をリセットしました。");
+
     // 得点表示を更新
     updateTotalScore();
+
     // ページを再読み込み
     location.reload();
 }
