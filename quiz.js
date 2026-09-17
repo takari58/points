@@ -19,35 +19,42 @@ const landmarkPoints = {
     "旧新発田市役所": 100,
     "新潟職能短大": 100,
     "菊水": 100,
-    "ボン・タケダ": 110,
+    "ボン・タケダ": 100,
 
     // 激レア
     "藤倉メンチカツや": 110,
     "いっぷく": 110,
     "文化洋食ino": 110,
     "やすけカレー": 110,
-    "お食事処 蒲城": 110,
+    "レストラン蒲城": 110,
     "コーヒーマリーナ 煉瓦屋": 110
-    "パーラーやお屋": 110
 };
 
 // ランドマークごとのクイズ(17か所×3問)
 const quizData = {
+    "テスト": [
+        { q: "テスト用/1問1200点/回答：〇", a: true,
+          explanation:"問題解説" },
+        { q: "テスト用/1問1200点/回答：×", a: false,
+          explanation:"問題解説" },
+        { q: "テスト用/1問1200点/回答：〇", a: true,
+          explanation:"問題解説" }
+    ],
     "新発田城跡": [
         { q: "新発田城は花の名前にちなんで別名「あやめ城」と呼ばれる", a: true,
-          explanation:"かつて城周辺に湿地が多く自生したあやめが多かったことに由来しています" },
+          explanation:"かつて新発田城周辺に湿地が多く、自生したあやめが多かったことに由来しています" },
         { q: "新発田城の屋根には二匹のシャチホコが乗っている", a: false,
           explanation:"三階櫓の屋根の形はT字型になっており、全国でも珍しい3匹のシャチホコが乗っています" },
         { q: "新発田城は国の重要文化財に指定されている", a: true,
-          explanation:"「表門」と「旧二の丸偶櫓」が重要文化財に指定されています" }
+          explanation:"「表門」と「旧二の丸隅櫓」が重要文化財に指定されています" }
     ],
     "清水園": [
         { q: "清水園の中央にある大きな池は上から見ると「水」という文字をかたどっている", a: true,
-          explanation:"草書体の「水」の文字を模した複雑な池泉が特徴です" },
+          explanation:"草書体の「水」の文字を模した複雑な池泉(ちせん)が特徴です" },
         { q: "清水園は江戸時代初期に作られた庭園である", a: false,
           explanation:"現在の清水園は、江戸時代中期に整備されたとされています" },
         { q: "清水園は国の名勝に指定されている", a: true,
-          explanation:"正式名称は「旧新発田藩下屋敷清水谷御殿庭園及び五十公野御茶屋庭園」です" }
+          explanation:"正式名称は「旧新発田藩下屋敷清水谷御殿庭園及び五十公野(いじみの)御茶屋庭園」です" }
     ],
     "蔵春閣": [
         { q: "蔵春閣はもともと新発田市に建てられた建物である。", a: false,
@@ -67,14 +74,14 @@ const quizData = {
     ],
     "諏訪神社": [
         { q: "五穀豊穣・無病息災・学業成就などの御利益があると言われている", a: true,
-          explanation:"主祭神は「建御名方命」、武勇や開運・農業・勝負の神と言われています" },
+          explanation:"主祭神は「建御名方命(たけみなかたのみこと)」、武勇や開運・農業・勝負の神と言われています" },
         { q: "今の社殿は建立当時のまま、再建はされていない", a: false,
           explanation:"平成13年11月5日の不審火によって消失、その後再建が行われました" },
         { q: "諏訪神社は「おすわさま」という愛称で親しまれている", a: true,
           explanation:"厄払いや車のお祓い、年間を通じた様々な催事で地域の人に深く愛されています" }
     ],
     "市役所": [
-        { q: "市役所の本庁舎は10階建てである", a: false,
+        { q: "新発田市役所の本庁舎は10階建てである", a: false,
           explanation:"地上7階建てです" },
         { q: "新発田市役所の本庁舎の愛称は「ヨリネスしばた」である", a: true,
           explanation:"「ヨリ」とは市民が立ち寄る、市民と行政の糸をより合わせた太い綱の意味、「ネス」は新発田の方言です" },
@@ -154,10 +161,10 @@ const quizData = {
           explanation:"旧庁舎跡地は現在、広場などとして整備されています" }
     ],
     "新潟職能短大":[
-        { q: "桜の木の数は25本以上である", a: true,
+        { q: "短大敷地内の桜の木の数は25本以上である", a: true,
           explanation:"全部で35本あります" },
-        { q: "学外の人は学食が食べられない", a: false,
-          explanation:"学外の方も食券を購入して学食を食べることができます" },
+        { q: "学外の人は学食メニューを食べることができない", a: false,
+          explanation:"学外の方も食券を購入して学食メニューを食べることができます" },
         { q: "このアプリを作ったのは電子情報技術科の学生である", a: true,
           explanation:"卒業研究でウェブアプリケーションの開発をしました" }
     ],
@@ -169,7 +176,7 @@ const quizData = {
         { q: "麴や酒粕を利用したスイーツやオリジナルドリンクが楽しめるカフェがある", a: true,
           explanation:"店内からは枯山水の日本庭園を眺めることができます" }
     ],
-    "ボン・タケダ": [
+     "ボン・タケダ": [
         { q: "名物のクレープは、中にクロワッサン生地が入っている", a: true,
           explanation:"クレープのボリュームと食感が人気です" },
         { q: "創業10年の新しいベーカリーである", a: false,
@@ -178,14 +185,6 @@ const quizData = {
           explanation:"小麦アレルギーでも安心して新潟の米粉パンを楽しむことができます" }
     ],
     //激レアも以下にクイズを作成
-    "テスト": [
-        { q: "テスト用/1問1200点/回答：〇", a: true,
-          explanation:"問題解説" },
-        { q: "テスト用/1問1200点/回答：×", a: false,
-          explanation:"問題解説" },
-        { q: "テスト用/1問1200点/回答：〇", a: true,
-          explanation:"問題解説" }
-    ],
     "藤倉メンチカツや": [
         { q: "メンチカツ専門店である", a: false,
           explanation:"メンチカツやとんかつ、モツ煮を楽しむことができます" },
@@ -253,8 +252,10 @@ const spotName = params.get("spot");
 let answeredSpots =
     JSON.parse(localStorage.getItem("answeredSpots")) || [];
 
-//解答済みか確認
+// この地点をすでに回答しているか確認
+
 if (answeredSpots.includes(spotName)) {
+
     document.querySelector(".quiz-container").style.display = "none";
     const scoreScreen = document.getElementById("scoreScreen");
     scoreScreen.classList.remove("hidden");
@@ -265,22 +266,31 @@ if (answeredSpots.includes(spotName)) {
 }
 
 // クイズ
+
 function startQuiz() {
+
     document.getElementById("title").textContent =
         spotName + " クイズ";
+
     const quizzes = quizData[spotName];
-    // クイズがない場合
+
+    // クイズが存在しない場合
     if (!quizzes) {
         document.getElementById("quizBox").textContent =
             "この地点のクイズはありません。";
         return;
     }
+
     let index = 0;
+
     // このクイズでの正解数
     let score = 0;
+
     // 1問20点
     const POINT = 1200;
+
     // 問題表示
+
     function showQuiz() {
         document.getElementById("result").textContent = "";
         document.getElementById("explanation").textContent = "";
@@ -290,10 +300,14 @@ function startQuiz() {
 
     // 最初の問題を表示
     showQuiz();
+
     // 回答
+
     window.answer = function(userAnswer) {
+
         const quiz = quizzes[index];
         const correct = quiz.a;
+
         // 正解判定
         if (userAnswer === correct) {
             document.getElementById("result").textContent =
@@ -304,11 +318,13 @@ function startQuiz() {
                 "不正解…";
         }
 
+
         document.getElementById("explanation").textContent =
             "解説： " + quiz.explanation;
 
         // 次の問題へ
         index++;
+
         if (index < quizzes.length) {
             setTimeout(showQuiz, 1000);
         } else {
@@ -325,28 +341,36 @@ function startQuiz() {
           landmarkPoints[spotName] || 0;
       //今回の総獲得点
         const earnedScore=quizScore + landmarkPoint;
-      // 合計得点を取得
+
+        // 合計得点を取得
         let totalScore =
             Number(localStorage.getItem("totalScore")) || 0;
-       // 今回の得点を加算
+
+        // 今回の得点を加算
         totalScore += earnedScore;
+
         // localStorageに保存
         localStorage.setItem(
             "totalScore",
             totalScore
         );
+
         // 回答済み地点として保存
         answeredSpots.push(spotName);
+
         localStorage.setItem(
             "answeredSpots",
             JSON.stringify(answeredSpots)
         );
+
         // クイズ画面を消す
         document.querySelector(".quiz-container").style.display =
             "none";
+
         // スコア画面表示
         document.getElementById("scoreScreen")
             .classList.remove("hidden");
+
     // 結果表示
     document.getElementById("scoreText").innerHTML = `
         ${quizzes.length}問中 ${score}問正解<br>
