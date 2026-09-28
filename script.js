@@ -137,7 +137,7 @@ const spots2 =[
         //lng:139.339891,
         lat:37.95693480157634, 
         lng:139.3360638811011,
-        radius: 50,
+        radius: 80,
         unlockPoint:0,
         //image:"castle.png"
     },
