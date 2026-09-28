@@ -163,7 +163,7 @@ const spots2 =[
       lng: 139.33428189358867 ,
       radius: 50,
       unlockPoint:1440,
-      image:"image/ino.png"
+      image:"image/ino.jpg"
     },
     {
       name: "やすけカレー",
