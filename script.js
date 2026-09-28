@@ -137,7 +137,7 @@ const spots2 =[
         //lng:139.339891,
         lat:37.95693480157634, 
         lng:139.3360638811011,
-        radius: 80,
+        radius: 50,
         unlockPoint:0,
         //image:"castle.png"
     },
@@ -220,7 +220,10 @@ spots.forEach(spot => {
     const popupContent = `
         <div style="text-align:center;">
             <h3>${spot.name}</h3>
-            <img src="${spot.image}" width="200"><br>
+            <img
+                src="${spot.image}"
+                class="spot-image"
+                alt><br>
         </div>
     `;
     L.marker([spot.lat, spot.lng]).addTo(map)
@@ -291,12 +294,15 @@ function updateRareSpots() {
             `;
         } else {
             popupContent = `
-                <div style="text-align:center;">
-                    <h3>★ ${spot.name}</h3>
-                    <img src="${spot.image}" width="200"><br>
-                    <p>激レアスポット解放！</p>
-                </div>
-            `;
+            <div style="text-align:center;">
+                <h3>★ ${spot.name}</h3>
+                <img
+                src="${spot.image}"
+                class="spot-image"
+                alt><br>
+                <p>激レアスポット解放！</p>
+            </div>
+`;
         }
 
         marker.bindPopup(popupContent);
