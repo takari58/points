@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>クイズ</title>
+    <title>新発田街歩きアプリ</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
     <link rel="stylesheet" href="style.css">
@@ -29,6 +29,27 @@
 <button id="resetButton" onclick="resetGame()">
     得点・回答履歴をリセット
 </button>
+
+<!-- 激レア解放演出 -->
+<div id="unlockModal" class="unlock-modal">
+    <div class="unlock-content">
+        <div class="unlock-stars">
+            ⭐⭐⭐⭐⭐
+        </div>
+
+        <h2>激レアスポット解放！</h2>
+
+        <h3 id="unlockSpotName"></h3>
+
+        <p>
+            地図に新しいスポットが出現しました
+        </p>
+
+        <button onclick="closeUnlockModal()">
+            OK
+        </button>
+    </div>
+</div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="script.js"></script>
