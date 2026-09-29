@@ -518,6 +518,7 @@ navigator.geolocation.watchPosition(
     }
 );
 
+
 // 合計得点を表示
 
 function updateTotalScore() {
