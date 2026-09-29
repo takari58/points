@@ -244,7 +244,6 @@ const quizData = {
 };
 
 // URLからランドマーク名を取得
-
 const params = new URLSearchParams(window.location.search);
 const spotName = params.get("spot");
 
@@ -253,9 +252,7 @@ let answeredSpots =
     JSON.parse(localStorage.getItem("answeredSpots")) || [];
 
 // この地点をすでに回答しているか確認
-
 if (answeredSpots.includes(spotName)) {
-
     document.querySelector(".quiz-container").style.display = "none";
     const scoreScreen = document.getElementById("scoreScreen");
     scoreScreen.classList.remove("hidden");
@@ -266,7 +263,6 @@ if (answeredSpots.includes(spotName)) {
 }
 
 // クイズ
-
 function startQuiz() {
 
     document.getElementById("title").textContent =
@@ -290,7 +286,6 @@ function startQuiz() {
     const POINT = 1200;
 
     // 問題表示
-
     function showQuiz() {
         document.getElementById("result").textContent = "";
         document.getElementById("explanation").textContent = "";
@@ -302,7 +297,6 @@ function startQuiz() {
     showQuiz();
 
     // 回答
-
     window.answer = function(userAnswer) {
 
         const quiz = quizzes[index];
@@ -317,7 +311,6 @@ function startQuiz() {
             document.getElementById("result").textContent =
                 "不正解…";
         }
-
 
         document.getElementById("explanation").textContent =
             "解説： " + quiz.explanation;
