@@ -1,204 +1,575 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+// ランドマーク一覧
+const spots = [
+    {
+        name: "新発田城跡",        //ランドマーク名称
+        lat: 37.954824724542696,   //緯度
+        lng: 139.326001834219947,  //経度
+        radius: 50,                //leaflet-circle-radius[m] 有効範囲
+        image:"image/城.png"         //イメージ画像
+    },
+    {
+        name: "清水園",
+        lat: 37.943791,
+        lng: 139.328785,
+        radius: 50,
+        image:"image/清水園.jpg"
+    },
+    {
+        name: "蔵春閣",
+        lat: 37.94389807273562,
+        lng: 139.3317142467578,
+        radius: 20,
+        image:"image/蔵春閣.png"
+    },
+    {
+        name: "東公園のSL",
+        lat: 37.94371455113034,
+        lng: 139.33219327519282,
+        radius: 20,
+        image:"image/SL.jpg"
+    },
+    {
+        name: "諏訪神社",
+        lat: 37.944214,
+        lng: 139.332004,
+        radius: 20,
+        image:"image/諏訪神社.jpg"
+    },
+    {
+        name: "新発田市役所",
+        lat: 37.947839,
+        lng: 139.327160,
+        radius: 30,
+        image:"image/役所.jpg"
+    },
+    {
+        name: "王紋酒造",
+        lat: 37.94436989072327,
+        lng: 139.33066511399528,
+        radius: 30,
+        image:"image/王紋.jpg"
+    },
+    {
+        name: "五十公野公園",
+        lat: 37.939869,
+        lng: 139.356680,
+        radius: 80,
+        image:"image/五十公野公園.png",
+    },
+    {
+        name: "カルチャーセンター",
+        lat: 37.950246,
+        lng: 139.338618,
+        radius: 45,
+        image:"image/カルチャー.jpg"
+    },
+    {
+        name: "新発田駅",
+        lat: 37.94413,
+        lng: 139.33510,
+        radius: 35,
+        image:"image/駅.png",
+    },
+    {
+        name: "あやめの湯",
+        lat: 37.953545,
+        lng: 139.3549475,
+        radius: 50,
+        image:"image/あやめの湯.jpg"
+    },
+    {
+        name: "イクネスしばた",
+        lat: 37.944357,
+        lng: 139.333388,
+        radius: 30,
+        image:"image/イクネス.jpg"
+    },
+    {
+        name: "市民文化会館",
+        lat: 37.951722,
+        lng:139.326564,
+        radius: 30,
+        image:"image/文化会館.jpg"
+    },
+    {
+        name: "新発田歴史図書館",
+        lat: 37.951279909157336,
+        lng: 139.32774756292181,
+        radius: 30,
+        image:"image/歴史図書館.jpg"
+    },
+    {
+        name: "旧新発田市役所",
+        lat: 37.950883,
+        lng: 139.327898,
+        radius: 30,
+        image:"image/旧役所.png"
+    },
+    {
+        name: "新潟職能短大",
+        lat: 37.956067,
+        lng: 139.337938,
+        radius:150,
+        image:"image/短大.png",
+    },
+    {
+        name: "菊水",
+        lat: 37.960376479226,
+        lng: 139.35429135822383,
+        radius: 30,
+        image:"image/菊水.jpg"
+    },
+    {
+      name: "ボン・タケダ",
+      lat: 37.94039, 
+      lng: 139.33600,
+      radius: 50,
+      image:"image/タケダ.jpg"
+    }, 
+];
+
+//激レアランドマーク
+const spots2 =[
+    {
+        name: "テスト",
+        //学校用 激レアスポット
+        //lat: 37.958972,  
+        //lng:139.339891,
+        lat:37.95693480157634, 
+        lng:139.3360638811011,
+        radius: 80,
+        unlockPoint:0,
+        //image:"castle.png"
+    },
+    {
+      name: "藤倉メンチカツや",
+      lat: 37.93682,
+      lng: 139.34488,
+      radius:50,
+      unlockPoint:480,
+      image:"image/メンチカツ.jpg"
+    },
+    {
+      name: "いっぷく",
+      lat: 37.94437654050752, 
+      lng: 139.3407439626735,
+      radius: 50,
+      unlockPoint:960,
+      image:"image/いっぷく.jpg"
+    },
+    {
+      name: "文化洋食ino",
+      lat: 37.96236411397717, 
+      lng: 139.33428189358867 ,
+      radius: 50,
+      unlockPoint:1440,
+      image:"image/ino.jpg"
+    },
+    {
+      name: "やすけカレー",
+      lat: 37.93774827263629, 
+      lng: 139.33615892651278 ,
+      radius: 50,
+      unlockPoint:1920,
+      image:"image/やすけ.jpg"
+    },
+    {
+      name: "お食事処 蒲城",
+      lat: 37.95049684, 
+      lng: 139.3394747,
+      radius: 50,
+      unlockPoint:2400,
+      image:"image/蒲城.jpg"
+    },
+    {
+      name: "コーヒーマリーナ 煉瓦屋",
+      lat: 37.94901564395905,
+      lng: 139.3243217255289,
+      radius: 50,
+      unlockPoint:3360,
+      image:"image/煉瓦屋.png"
+    },
+    {
+      name: "パーラーやお屋",
+      lat: 37.9584998,
+      lng: 139.3425282,
+      radius: 50,
+      unlockPoint:3360,
+      image:"image/やおや.png"
+    },
+]
+// 現在地用アイコン
+const userIcon = L.icon({
+    iconUrl: "current-pin.png",
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+});
+
+//地図初期化(新発田駅中心) 
+const map = L.map('map').setView(
+    [37.94410134702021, 139.3350867139979],17);
+
+// 最初の現在地取得時だけ地図を現在地へ移動する
+let firstLocation = true;
+
+// 現在地を保存
+let currentLat = null;
+let currentLng = null;
+
+
+// タイル
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+//配列で指定したランドマークにマーカー表示
+spots.forEach(spot => {
+    //マーカークリック時にランドマーク名称とイメージ画像表示
+    const popupContent = `
+        <div style="text-align:center;">
+            <h3>${spot.name}</h3>
+            <img
+                src="${spot.image}"
+                class="spot-image"
+                alt><br>
+        </div>
+    `;
+    L.marker([spot.lat, spot.lng]).addTo(map)
+        .bindPopup(popupContent);
+
+    //クイズ出題可能範囲の円
+    L.circle([spot.lat, spot.lng], {
+        radius: spot.radius,
+        color: 'blue',
+        fillOpacity: 0.2
+    }).addTo(map);
+});
+
+
+// 激レアランドマークの解放・表示
+function updateRareSpots() {
+
+    const totalScore =
+        Number(localStorage.getItem("totalScore")) || 0;
+
+    const answeredSpots =
+        JSON.parse(
+            localStorage.getItem("answeredSpots")
+        ) || [];
+
+    spots2.forEach(spot => {
+
+        // 必要得点未達
+        if (totalScore < spot.unlockPoint) {
+            return;
+        }
+        // すでにピンを作成済み
+        if (spot.marker) {
+            return;
+        }
+        // 回答済みかどうか
+        const answered =
+            answeredSpots.includes(spot.name);
+        //激レアのピンは☆になってる
+        const marker = L.marker([
+            spot.lat,
+            spot.lng
+        ],{
+            icon:L.icon({
+                iconUrl:'rare-pin.png',
+                iconSize:[40,40],
+                iconAnchor:[20,40],
+                popupAnchor:[0,-40]
+            })
+        }).addTo(map);
+
+        //激レアの回答可能範囲
+        L.circle([spot.lat, spot.lng], {
+            radius: spot.radius,
+            color: 'gold',
+            fillColor: 'gold',
+            fillOpacity: 0.2
+        }).addTo(map);
+
+        let popupContent;
+
+        if (answered) {
+            popupContent = `
+                <div style="text-align:center;">
+                    <h3>★ ${spot.name}</h3>
+                    <p>回答済み</p>
+                </div>
+            `;
+        } else {
+            popupContent = `
+            <div style="text-align:center;">
+                <h3>★ ${spot.name}</h3>
+                <img
+                src="${spot.image}"
+                class="spot-image"
+                alt><br>
+                <p>激レアスポット解放！</p>
+            </div>
+`;
+        }
+
+        marker.bindPopup(popupContent);
+
+        // マーカーを保存
+        spot.marker = marker;
+    });
 }
 
-body {
-    font-family: Arial;
-    text-align: center;
+// ページ読み込み時に確認
+updateRareSpots();
+
+// ====== 距離計算 ======
+function getDistance(lat1, lng1, lat2, lng2) {
+    const R = 6371000;
+    const toRad = x => x * Math.PI / 180;
+
+    const dLat = toRad(lat2 - lat1);
+    const dLng = toRad(lng2 - lng1);
+
+    const a = Math.sin(dLat/2) ** 2 +
+        Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+        Math.sin(dLng/2) ** 2;
+
+    return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-header{
-    background:orange;
-    color:white;
-    text-align:center;
-    padding:15px;
-    box-shadow:0 2px 5px rgba(0,0,0,0.2);
-}
-header h1{
-    font-size:24px;
-}
+// ====== 現在地取得 ======
 
-/* 地図 */
-#map {
-    height: 350px;
-    width: 95%;
-    margin: auto;
-    border: 2px solid black;
-}
+let answeredSpots =
+    JSON.parse(localStorage.getItem("answeredSpots")) || [];
 
-/* 結果 */
-#result {
-    margin-top: 20px;
-    font-size: 18px;
-    color: blue;
-}
-
-/* 現在地表示（緯度・経度・） */
-#coords {
-    margin-top: 10px;
-    font-size: 14px;
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 8px;
-    width: 250px;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid #ccc;
-}
-
-/* 合計得点 */
-#totalScore {
-    margin: 10px auto;
-    padding: 10px;
-    width: 250px;
-    background-color: #fff3cd;
-    border: 2px solid #ffc107;
-    border-radius: 8px;
-    font-size: 22px;
-    font-weight: bold;
-    color: #333;
-}
-
-/* 開発用リセットボタン */
-#resetButton {
-    margin: 15px;
-    padding: 10px 20px;
-    width: auto;
-    height: auto;
-    background-color: #555;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-#resetButton:hover {
-    background-color: #333;
-}
-
-.leaflet-popup-content {
-    width: 220px !important;
-    text-align: center;
-}
-
-.leaflet-popup-content h3 {
-    margin: 0 0 10px 0;
-    font-size: 18px;
-}
-
-.spot-image {
-    width: 200px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-}
-
-.leaflet-popup-content p {
-    margin-top: 8px;
-}
-
-/* クイズ案内カード */
-.quiz-notice {
-    width: calc(100% - 40px);
-    max-width: 500px;
-    margin: 15px auto;
-    padding: 20px;
-    box-sizing: border-box;
-
-    background: linear-gradient(135deg, #fff8df, #fff2b8);
-    border: 2px solid #f5b942;
-    border-radius: 18px;
-
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-
-    animation: popIn 0.4s ease;
-}
-
-.quiz-notice .arrival {
-    font-size: 16px;
-    font-weight: bold;
-    color: #e58a00;
-    margin-bottom: 8px;
-}
-
-.quiz-notice .spot-name {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin: 8px 0 12px;
-}
-
-.quiz-notice .message {
-    font-size: 15px;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
-
-.quiz-button {
-    display: inline-block;
-    padding: 13px 28px;
-
-    background: #ff9f1c;
-    color: white;
-
-    font-size: 17px;
-    font-weight: bold;
-    text-decoration: none;
-
-    border-radius: 30px;
-
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-
-    transition: 0.2s;
-}
-
-.quiz-button:hover {
-    background: #f28705;
-    transform: translateY(-2px);
-}
-
-.rare-notice {
-    background: linear-gradient(135deg, #fff7c2, #ffe27a);
-    border: 3px solid #f5b400;
-
-    box-shadow:
-        0 0 10px rgba(255, 193, 7, 0.5),
-        0 5px 20px rgba(0,0,0,0.18);
-}
-
-.rare-notice .arrival {
-    color: #d88a00;
-    font-size: 18px;
-}
-
-.rare-button {
-    background: linear-gradient(135deg, #ffb300, #ff8c00);
-}
+// ランドマーク到達ポイント用
+let arrivalSpots =
+    JSON.parse(localStorage.getItem("arrivalSpots")) || [];
 
 
-@keyframes popIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
+// ====== 現在地取得 ======
+navigator.geolocation.watchPosition(
+    position => {
+
+        const userLat = position.coords.latitude;
+        const userLng = position.coords.longitude;
+
+        // 現在地を保存
+        currentLat = userLat;
+        currentLng = userLng;
+
+        if (firstLocation) {
+            map.setView(
+                [userLat, userLng],
+                17
+            );
+            firstLocation = false;
+        }
+
+        const coordsElement =
+            document.getElementById("coords");
+
+        if (coordsElement) {
+            coordsElement.innerHTML = `
+                緯度: ${userLat.toFixed(6)}<br>
+                経度: ${userLng.toFixed(6)}
+            `;
+
+        }
+        if (window.userMarker) {
+            map.removeLayer(
+                window.userMarker
+            );
+        }
+
+        window.userMarker =
+            L.marker(
+                [userLat, userLng],
+                {
+                    icon: userIcon
+                }
+            )
+            .addTo(map)
+            .bindPopup("現在地");
+
+        let found = false;
+
+        spots.forEach(spot => {
+            const distance =
+                getDistance(
+                    userLat,
+                    userLng,
+                    spot.lat,
+                    spot.lng
+                );
+
+            if (
+                !answeredSpots.includes(spot.name) &&
+                distance <= spot.radius
+            ) {
+                found = true;
+                document.getElementById(
+                    "result"
+                ).innerHTML = `
+                    <div class="quiz-notice">
+                        <div class="arrival">
+                            🎉 スポット到着！
+                        </div>
+                        <div class="spot-name">
+                            📍 ${spot.name}
+                        </div>
+                        <div class="message">
+                            この場所についての
+                            クイズに<br>
+                            挑戦してみよう！
+                            <br>
+                            <strong>
+                                正解するとポイントGET！
+                            </strong>
+                        </div>
+
+                        <a
+                            class="quiz-button"
+                            href="quiz.html?spot=${encodeURIComponent(spot.name)}"
+                        >
+                            🧩 クイズに挑戦する！
+                        </a>
+                    </div>
+                `;
+            }
+        });
+
+        spots2.forEach(spot => {
+            const totalScore =
+                Number(
+                    localStorage.getItem(
+                        "totalScore"
+                    )
+                ) || 0;
+
+            // 必要得点に達していない
+            if (
+                totalScore <
+                spot.unlockPoint
+            ) {
+                return;
+            }
+            const distance =
+                getDistance(
+                    userLat,
+                    userLng,
+                    spot.lat,
+                    spot.lng
+                );
+            if (
+                !answeredSpots.includes(
+                    spot.name
+                ) &&
+                distance <= spot.radius
+            ) {
+                found = true;
+                document.getElementById(
+                    "result"
+                ).innerHTML = `
+                    <div class="quiz-notice rare-notice">
+                        <div class="arrival">
+                            ✨ 激レアスポット発見！ ✨
+                        </div>
+                        <div class="spot-name">
+                            ⭐ ${spot.name}
+                        </div>
+                        <div class="message">
+                            激レアスポットの
+                            クイズが解放されました！
+                            <br>
+                            <strong>
+                                ボーナスポイントGETのチャンス！
+                            </strong>
+                        </div>
+                        <a
+                            class="quiz-button rare-button"
+                            href="quiz.html?spot=${encodeURIComponent(spot.name)}"
+                        >
+                            ⭐ 特別クイズに挑戦！
+                        </a>
+                    </div>
+                `;
+            }
+        });
+
+        if (!found) {
+            document.getElementById(
+                "result"
+            ).innerHTML =
+                "新発田市内を移動してください";
+        }
+    },
+
+    error => {
+        console.error(
+            "位置情報エラー:",
+            error
+        );
+        alert(
+            "位置情報が取得できません"
+        );
+    }
+);
+
+
+// 合計得点を表示
+
+function updateTotalScore() {
+
+    const totalScore =
+        Number(localStorage.getItem("totalScore")) || 0;
+
+    const scoreElement =
+        document.getElementById("totalScore");
+
+    if (scoreElement) {
+        scoreElement.textContent =
+            `現在の得点：${totalScore}点`;
     }
 
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    // 激レアスポットの解放状況を更新
+    updateRareSpots();
 }
 
+// ページ読み込み時に得点を表示
+updateTotalScore();
 
+// 開発用：得点・回答履歴をリセット
+function resetGame() {
 
-@media screen and (max-width:768px){
+    const result =
+        confirm(
+            "得点と回答履歴をすべてリセットしますか？"
+        );
 
-    header h1{
-        font-size:24px;
+    if (!result) {
+        return;
     }
+
+    // 得点を0にする
+    localStorage.setItem(
+        "totalScore",
+        "0"
+    );
+
+    // 回答済み地点を空にする
+    localStorage.setItem(
+        "answeredSpots",
+        JSON.stringify([])
+    );
+
+    alert("得点と回答履歴をリセットしました。");
+
+    // 得点表示を更新
+    updateTotalScore();
+
+    // ページを再読み込み
+    location.reload();
 }
